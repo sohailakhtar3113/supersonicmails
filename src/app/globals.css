@@ -1,26 +1,99 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
+/* ---------- Self-hosted fonts (real Framer woff2) ---------- */
+@font-face{font-family:"Rethink Sans";font-style:normal;font-weight:400;font-display:swap;src:url("/fonts/Rethink_Sans_400_normal.woff2") format("woff2");}
+@font-face{font-family:"Rethink Sans";font-style:normal;font-weight:500;font-display:swap;src:url("/fonts/Rethink_Sans_500_normal.woff2") format("woff2");}
+@font-face{font-family:"Rethink Sans";font-style:normal;font-weight:600;font-display:swap;src:url("/fonts/Rethink_Sans_600_normal.woff2") format("woff2");}
+@font-face{font-family:"Rethink Sans";font-style:normal;font-weight:700;font-display:swap;src:url("/fonts/Rethink_Sans_700_normal.woff2") format("woff2");}
+@font-face{font-family:"Awesome Serif Semi Bold Tall";font-style:normal;font-weight:600;font-display:swap;src:url("/fonts/Awesome_Serif_Semi_Bold_Tall_600_normal.woff2") format("woff2");}
+@font-face{font-family:"Awesome Serif Bold Tall";font-style:normal;font-weight:700;font-display:swap;src:url("/fonts/Awesome_Serif_Bold_Tall_700_normal.woff2") format("woff2");}
+@font-face{font-family:"Awesome Serif Italic Regular";font-style:normal;font-weight:400;font-display:swap;src:url("/fonts/Awesome_Serif_Italic_Regular_400_normal.woff2") format("woff2");}
+@font-face{font-family:"Awesome Serif Italic Bold Regular";font-style:normal;font-weight:700;font-display:swap;src:url("/fonts/Awesome_Serif_Italic_Bold_Regular_700_normal.woff2") format("woff2");}
+@font-face{font-family:"Awesome Serif Regular";font-style:normal;font-weight:400;font-display:swap;src:url("/fonts/Awesome_Serif_Regular_400_normal.woff2") format("woff2");}
+@font-face{font-family:"Inter";font-style:normal;font-weight:400;font-display:swap;src:url("/fonts/Inter_400_normal.woff2") format("woff2");}
+@font-face{font-family:"Inter";font-style:normal;font-weight:500;font-display:swap;src:url("/fonts/Inter_500_normal.woff2") format("woff2");}
+@font-face{font-family:"Inter";font-style:normal;font-weight:600;font-display:swap;src:url("/fonts/Inter_600_normal.woff2") format("woff2");}
+@font-face{font-family:"Inter";font-style:normal;font-weight:700;font-display:swap;src:url("/fonts/Inter_700_normal.woff2") format("woff2");}
+@font-face{font-family:"Inter";font-style:italic;font-weight:400;font-display:swap;src:url("/fonts/Inter_400_italic.woff2") format("woff2");}
+@font-face{font-family:"Inter Display";font-style:normal;font-weight:300;font-display:swap;src:url("/fonts/Inter_Display_300_normal.woff2") format("woff2");}
+@font-face{font-family:"Inter Display";font-style:normal;font-weight:400;font-display:swap;src:url("/fonts/Inter_Display_400_normal.woff2") format("woff2");}
+@font-face{font-family:"Inter Display";font-style:normal;font-weight:500;font-display:swap;src:url("/fonts/Inter_Display_500_normal.woff2") format("woff2");}
+@font-face{font-family:"Inter Display";font-style:normal;font-weight:600;font-display:swap;src:url("/fonts/Inter_Display_600_normal.woff2") format("woff2");}
+@font-face{font-family:"Inter Display";font-style:normal;font-weight:700;font-display:swap;src:url("/fonts/Inter_Display_700_normal.woff2") format("woff2");}
+@font-face{font-family:"Inter Display";font-style:italic;font-weight:400;font-display:swap;src:url("/fonts/Inter_Display_400_italic.woff2") format("woff2");}
+@font-face{font-family:"Inter Display";font-style:italic;font-weight:500;font-display:swap;src:url("/fonts/Inter_Display_500_italic.woff2") format("woff2");}
+@font-face{font-family:"Poppins";font-style:normal;font-weight:400;font-display:swap;src:url("/fonts/Poppins_400_normal.woff2") format("woff2");}
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --color-bg: #00020F;
+  --color-panel: #0A0E22;
+  --color-card: #131839;
+  --color-muted: #A7ADBE;
+  --color-accent: #3362FF;
+  --font-display: "Inter Display", "Inter", sans-serif;
+  --font-body: "Inter", sans-serif;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+:root {
+  --bg: #00020F;
+  --muted: #A7ADBE;
+  --accent: #3362FF;
 }
+
+* { box-sizing: border-box; }
+
+html { -webkit-font-smoothing: antialiased; text-rendering: optimizeLegibility; }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background: #00020F;
+  color: #ffffff;
+  font-family: "Inter", sans-serif;
+  font-size: 18px;
+  line-height: 1.5;
+  overflow-x: hidden;
+}
+
+/* ---------- Font utilities ---------- */
+.font-hero      { font-family: "Awesome Serif Semi Bold Tall", serif; font-weight: 600; }
+.font-display   { font-family: "Inter Display", "Inter", sans-serif; }
+.font-body      { font-family: "Inter", sans-serif; }
+.font-rethink   { font-family: "Rethink Sans", sans-serif; }
+.font-poppins   { font-family: "Poppins", sans-serif; }
+/* italic serif accent inside headings */
+.serif-i        { font-family: "Awesome Serif Italic Regular", serif; font-style: normal; font-weight: 400; }
+.serif-hero-i   { font-family: "Awesome Serif Italic Regular", serif; font-style: normal; font-weight: 400; }
+
+/* ---------- Layout helpers ---------- */
+.container-page { width: 100%; max-width: 1240px; margin-inline: auto; padding-inline: 24px; }
+
+/* ---------- Marquee ---------- */
+@keyframes marquee-left  { from { transform: translateX(0); }   to { transform: translateX(-50%); } }
+@keyframes marquee-right { from { transform: translateX(-50%); } to { transform: translateX(0); } }
+.marquee-track { display: flex; width: max-content; will-change: transform; }
+.marquee-left  { animation: marquee-left var(--dur,28s) linear infinite; }
+.marquee-right { animation: marquee-right var(--dur,28s) linear infinite; }
+.marquee-mask:hover .marquee-track { animation-play-state: paused; }
+.marquee-mask { -webkit-mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent); mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent); }
+
+/* ---------- Buttons ---------- */
+.btn-primary {
+  display: inline-flex; align-items: center; gap: 10px; justify-content: center;
+  font-family: "Inter Display", sans-serif; font-weight: 500; font-size: 18px; color: #fff;
+  padding: 15px 26px; border-radius: 999px;
+  background: linear-gradient(180deg, #4C75FF 0%, #1A4FFF 100%);
+  box-shadow: 0 10px 30px -8px rgba(51,98,255,0.55), inset 0 1px 0 rgba(255,255,255,0.25);
+  transition: filter .2s ease, transform .2s ease, box-shadow .2s ease;
+  cursor: pointer; border: none;
+}
+.btn-primary:hover { filter: brightness(1.08); transform: translateY(-1px); box-shadow: 0 14px 38px -8px rgba(51,98,255,0.7), inset 0 1px 0 rgba(255,255,255,0.3); }
+.btn-primary:active { transform: translateY(0) scale(.99); }
+
+.pill { border-radius: 999px; }
+
+/* thin scrollbar hide for carousel */
+.no-scrollbar::-webkit-scrollbar { display: none; }
+.no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+
+@media (prefers-reduced-motion: reduce) {
+  .marquee-left, .marquee-right { animation: none; }
 }
