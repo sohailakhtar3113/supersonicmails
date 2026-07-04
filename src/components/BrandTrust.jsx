@@ -30,7 +30,7 @@ export default function BrandTrust() {
           <span className="inline-block border-[1.5px] border-[#3362FF] px-3 py-0.5 mx-1 sm:mx-1.5 text-white rounded-[2px] shadow-[0_0_12px_rgba(51,98,255,0.35)] transition-all duration-300 hover:shadow-[0_0_20px_rgba(51,98,255,0.7)]">
             Trust
           </span>{" "}
-          No Limit Email
+          Supersonic Mails
         </h2>
 
         {/* Brand Logos Container */}
