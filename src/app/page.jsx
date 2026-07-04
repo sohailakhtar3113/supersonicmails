@@ -1,5 +1,6 @@
 import Navbar from "@/components/Navbar";
 import Hero from "@/components/Hero";
+import BrandTrust from "@/components/BrandTrust";
 import StatsPartners from "@/components/StatsPartners";
 import Vsl from "@/components/Vsl";
 import Testimonials from "@/components/Testimonials";
@@ -20,6 +21,7 @@ export default function Home() {
       <Navbar />
       <main className="overflow-hidden">
         <Hero />
+        <BrandTrust />
         <StatsPartners />
         <Vsl />
         <Testimonials />

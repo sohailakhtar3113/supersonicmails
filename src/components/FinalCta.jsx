@@ -2,7 +2,7 @@
 import { motion } from "motion/react";
 import { ASSET, FINAL_CHECKS } from "./data";
 import { Reveal, revealSm, Stagger } from "./motion";
-import { ApplyButton } from "./ui";
+import { ApplyButton, TrustRow } from "./ui";
 
 export default function FinalCta() {
   return (
@@ -35,7 +35,7 @@ export default function FinalCta() {
 
           <Reveal variants={revealSm} className="mt-9 flex flex-col items-center gap-6">
             <ApplyButton />
-            <img src={ASSET.trust} alt="Trusted by 105+ brands" className="h-[54px] w-auto" />
+            <TrustRow />
           </Reveal>
         </Stagger>
       </Reveal>

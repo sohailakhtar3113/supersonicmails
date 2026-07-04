@@ -2,7 +2,9 @@
 import { motion } from "motion/react";
 import { ASSET } from "./data";
 import { Reveal } from "./motion";
-import { ApplyButton } from "./ui";
+import { ApplyButton, TrustRow } from "./ui";
+
+import LogoBrand from "./LogoBrand";
 
 export default function Footer() {
   const socials = [
@@ -16,10 +18,10 @@ export default function Footer() {
       <Reveal className="container-page relative z-10">
         <div className="grid grid-cols-1 gap-12 md:grid-cols-2">
           <div>
-            <img src={ASSET.logo} alt="Mach33 — Previously 360Funnels" className="h-12 w-auto" />
+            <LogoBrand />
             <div className="mt-10 flex flex-col items-start gap-6">
               <ApplyButton />
-              <img src={ASSET.trust} alt="Trusted by 105+ brands" className="h-[54px] w-auto" />
+              <TrustRow />
             </div>
           </div>
           <div className="flex flex-col items-start justify-between gap-10 md:items-end">
@@ -42,7 +44,7 @@ export default function Footer() {
 
         <div className="mt-14 border-t border-white/10 py-8">
           <div className="flex flex-col items-center justify-between gap-4 text-[15px] text-[#A7ADBE] md:flex-row">
-            <p>© 2026 Mach33 Media. All rights reserved</p>
+            <p>© 2026 Supersonic Mails. All rights reserved</p>
             <div className="flex gap-8">
               <a href="#" className="font-display transition-colors hover:text-white">Privacy Policy</a>
               <a href="#" className="font-display transition-colors hover:text-white">Terms &amp; Conditions</a>

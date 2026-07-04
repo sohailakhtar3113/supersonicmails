@@ -26,7 +26,7 @@ export default function Campaigns() {
       <Reveal className="container-page mb-12 text-center">
         <h2 className="font-display text-[32px] leading-[1.15] text-white md:text-[50px] md:leading-[60px]" style={{ letterSpacing: "-0.5px" }}>
           A Look Inside The Campaigns<br />
-          <span className="serif-i">Driving $150M+ in Revenue</span>
+          <span className="serif-i">Driving 7-Figure Revenue</span>
         </h2>
       </Reveal>
 

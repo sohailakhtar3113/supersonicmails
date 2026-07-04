@@ -2,7 +2,7 @@
 import { motion } from "motion/react";
 import { STAGES } from "./data";
 import { Reveal, revealSm } from "./motion";
-import { ApplyButton, Badge } from "./ui";
+import { ApplyButton, Badge, TrustRow } from "./ui";
 
 function StageBadge({ n }) {
   return (
@@ -26,7 +26,7 @@ export default function Process() {
             </h2>
             <div className="mt-8 flex flex-col items-start gap-6">
               <ApplyButton />
-              <img src="/assets/dysXcjp5A9wd0UNK5oZLU2jN9OQ.png" alt="Trusted by 105+ brands" className="h-[54px] w-auto" />
+              <TrustRow />
             </div>
           </Reveal>
         </div>

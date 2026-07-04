@@ -2,7 +2,7 @@
 import { motion } from "motion/react";
 import { ASSET } from "./data";
 import { Reveal, revealSm, Stagger } from "./motion";
-import { ApplyButton } from "./ui";
+import { ApplyButton, TrustRow } from "./ui";
 
 export default function Guarantee() {
   return (
@@ -36,12 +36,12 @@ export default function Guarantee() {
           </Reveal>
           <Reveal variants={revealSm}>
             <p className="font-body mt-5 text-[18px] font-medium leading-[1.5] text-[#A7ADBE]">
-              We&apos;ve done this for 105+ brands. We know what works. And we&apos;re willing to put our time on the line to prove it.
+              We&apos;ve done this for 35+ brands. We know what works. And we&apos;re willing to put our time on the line to prove it.
             </p>
           </Reveal>
           <Reveal variants={revealSm} className="mt-9 flex flex-col items-center gap-6">
             <ApplyButton />
-            <img src={ASSET.trust} alt="Trusted by 105+ brands" className="h-[54px] w-auto" />
+            <TrustRow />
           </Reveal>
         </Stagger>
       </Reveal>

@@ -2,7 +2,7 @@
 import { motion } from "motion/react";
 import { ASSET, CASES } from "./data";
 import { Reveal, revealSm, container } from "./motion";
-import { ApplyButton, Badge } from "./ui";
+import { ApplyButton, Badge, TrustRow } from "./ui";
 
 export default function CaseStudies() {
   return (
@@ -45,7 +45,7 @@ export default function CaseStudies() {
 
       <Reveal variants={revealSm} className="mt-12 flex flex-col items-center gap-6">
         <ApplyButton label="View All Case Studies" />
-        <img src={ASSET.trust} alt="Trusted by 105+ brands" className="h-[54px] w-auto" />
+        <TrustRow />
       </Reveal>
     </section>
   );

@@ -1,9 +1,9 @@
-// All content + asset references for the Mach33 homepage clone.
+// All content + asset references for the Supersonic Mails homepage.
 const A = "/assets";
 
 export const ASSET = {
-  logo: `${A}/Ix2lPp74wVrnjAhrKR39ZbsN2A.webp`,
-  logoMark: `${A}/7xX2Zp2zTsZfDQdRUbhOYDeW0.png`,
+  logo: `${A}/logo.png`,
+  logoMark: `${A}/logo.png`,
   arrow: `${A}/oBaa6E1AbNi6KJdlT3FXo3F1ziA.svg`,
   trust: `${A}/dysXcjp5A9wd0UNK5oZLU2jN9OQ.png`,
   heroArc: `${A}/xdaPXOEtPIASFiIeYk976HyJA.svg`,
@@ -40,10 +40,10 @@ export const ASSET = {
 export const NAV = ["Home", "Case Studies", "Reviews", "Process"];
 
 export const STATS = [
-  { value: "$150M+", label: "Revenue Generated" },
-  { value: "105+", label: "Brands Scaled" },
-  { value: "1B+", label: "Profitable Emails Sent" },
-  { value: "5:1", label: "LTV:CAC achieved" },
+  { value: "7-Figs", label: "Revenue Generated" },
+  { value: "35+", label: "Brands Scaled" },
+  { value: "2M+", label: "Emails Sending Every Month" },
+  { value: "64%", label: "Max Returning Customer Rate" },
 ];
 
 export const PARTNERS = [
@@ -62,10 +62,10 @@ export const VIDEO_TESTIMONIALS = [
 
 export const REVIEWS = [
   { title: "", body: "The Best agency I have ever worked with, they provide a lot more then what they promised have been lied to by an email agency before and also have bad experience with agencies not only for email marketing but for other services like google ads, etc. the owner is also the coolest guy you can work with, taking care of everything and looking after you business and he wants to take your business to the next level", name: "Nikolay Ganchev", role: "DTC Founder", avatar: `${A}/2q7ubrEzfT3uRSFujLeumQfRlU.png` },
-  { title: "", body: "Honestly I am supper itchy when it comes to agencies, but by far this one have been the easiest investment I made last year. They're super professional, fast and flexible. If you're looking for high converting emails and actually a team that actually writes good copy with high deliverability rate not just make \"pretty designs\" that doesn't convert I would highly recommend the360funnels.", name: "Ebram Bolavsky", role: "DTC Founder", avatar: `${A}/1eIR9llHqEtPs0OG0aUzb2766MY.png` },
-  { title: "", body: "The 360funnels team outperformed my previous email marketing agency by 5x. The biggest differentiator between these guys and other agencies is that the founder genuinely cares about my business performance and is actively involved. He's always more than happy to jump on a call to discuss strategy, make changes and give advice. Wouldn't work with anyone else.", name: "Kev", role: "Founder", avatar: `${A}/Lt7KvrrtPM45JOWkF2nhTYQs0c.png` },
-  { title: "The Best Agency We've Worked With", body: "Finding the right agency is like finding a needle in a haystack, and 360Funnels is that needle. Working with Ankit and his team has been one of the best decisions we've made for our brand. They delivered results that went beyond our expectations with minimal input from us, making the entire process incredibly hands-off.", name: "Jovin", role: "DTC Brand", avatar: `${A}/p62fCeZedMHdQ5WzI0fgM8CAfA.png` },
-  { title: "", body: "I've worked with 360 for almost 2 years now across multiple online stores. Usually with agencies its a hit or miss, whether its someone to run your google ads, facebook ads or email marketing. Luckily 360 remains the only agency so far that has actually made me more money than I've spent on them and they continue to do so.", name: "Hoover", role: "DTC Brand", avatar: `${A}/o1zHnx7WrHXWpPUMcpOETln1Ubg.png` },
+  { title: "", body: "Honestly I am supper itchy when it comes to agencies, but by far this one have been the easiest investment I made last year. They're super professional, fast and flexible. If you're looking for high converting emails and actually a team that actually writes good copy with high deliverability rate not just make \"pretty designs\" that doesn't convert I would highly recommend Supersonic Mails.", name: "Ebram Bolavsky", role: "DTC Founder", avatar: `${A}/1eIR9llHqEtPs0OG0aUzb2766MY.png` },
+  { title: "", body: "The Supersonic Mails team outperformed my previous email marketing agency by 5x. The biggest differentiator between these guys and other agencies is that the founder genuinely cares about my business performance and is actively involved. He's always more than happy to jump on a call to discuss strategy, make changes and give advice. Wouldn't work with anyone else.", name: "Kev", role: "Founder", avatar: `${A}/Lt7KvrrtPM45JOWkF2nhTYQs0c.png` },
+  { title: "The Best Agency We've Worked With", body: "Finding the right agency is like finding a needle in a haystack, and Supersonic Mails is that needle. Working with the team has been one of the best decisions we've made for our brand. They delivered results that went beyond our expectations with minimal input from us, making the entire process incredibly hands-off.", name: "Jovin", role: "DTC Brand", avatar: `${A}/p62fCeZedMHdQ5WzI0fgM8CAfA.png` },
+  { title: "", body: "I've worked with Supersonic Mails for almost 2 years now across multiple online stores. Usually with agencies its a hit or miss, whether its someone to run your google ads, facebook ads or email marketing. Luckily Supersonic Mails remains the only agency so far that has actually made me more money than I've spent on them and they continue to do so.", name: "Hoover", role: "DTC Brand", avatar: `${A}/o1zHnx7WrHXWpPUMcpOETln1Ubg.png` },
 ];
 
 export const REVIEWS2 = [
@@ -77,13 +77,12 @@ export const REVIEWS2 = [
 ];
 
 export const COMPARE = [
-  ["Basic Email & SMS Service", "Tailored Retention & Recovery Management"],
-  ["1 month Set-up Window", "Under 2 weeks to go live"],
-  ["Limited 8 & 9 figure experience", "Average client doing $2M/m+"],
-  ["Limited ecommerce experience", "6 years of E-Com and Retention Experience"],
-  ["North star: attributed revenue", "North Star: Profit, LTV & Attributed Revenue"],
-  ["Long-term lock-ins, hidden fees", "Monthly contracts. No hidden fees."],
-  ["No performance guarantee", "90-day guarantee or we work free"],
+  ["Took 21+ days to make the flows live", "1st email live in under 24 hours, all flows live under 7 days"],
+  ["Late replies, no response if something goes wrong", "Instant replies and proactive communication"],
+  ["Outsourced to inexperienced juniors", "In-house, highly experienced experts"],
+  ["A so-called “Agency”", "Your extended business partner"],
+  ["No performance guarantee", "Get your ROI back or we work for free plus send you $500"],
+  ["6-month locked-in contracts", "1-month contracts. No hidden fees. No upsells"],
 ];
 
 export const CAMPAIGNS = [

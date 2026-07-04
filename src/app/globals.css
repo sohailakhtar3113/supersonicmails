@@ -1,28 +1,181 @@
 @import "tailwindcss";
 
 /* ---------- Self-hosted fonts (real Framer woff2) ---------- */
-@font-face{font-family:"Rethink Sans";font-style:normal;font-weight:400;font-display:swap;src:url("/fonts/Rethink_Sans_400_normal.woff2") format("woff2");}
-@font-face{font-family:"Rethink Sans";font-style:normal;font-weight:500;font-display:swap;src:url("/fonts/Rethink_Sans_500_normal.woff2") format("woff2");}
-@font-face{font-family:"Rethink Sans";font-style:normal;font-weight:600;font-display:swap;src:url("/fonts/Rethink_Sans_600_normal.woff2") format("woff2");}
-@font-face{font-family:"Rethink Sans";font-style:normal;font-weight:700;font-display:swap;src:url("/fonts/Rethink_Sans_700_normal.woff2") format("woff2");}
-@font-face{font-family:"Awesome Serif Semi Bold Tall";font-style:normal;font-weight:600;font-display:swap;src:url("/fonts/Awesome_Serif_Semi_Bold_Tall_600_normal.woff2") format("woff2");}
-@font-face{font-family:"Awesome Serif Bold Tall";font-style:normal;font-weight:700;font-display:swap;src:url("/fonts/Awesome_Serif_Bold_Tall_700_normal.woff2") format("woff2");}
-@font-face{font-family:"Awesome Serif Italic Regular";font-style:normal;font-weight:400;font-display:swap;src:url("/fonts/Awesome_Serif_Italic_Regular_400_normal.woff2") format("woff2");}
-@font-face{font-family:"Awesome Serif Italic Bold Regular";font-style:normal;font-weight:700;font-display:swap;src:url("/fonts/Awesome_Serif_Italic_Bold_Regular_700_normal.woff2") format("woff2");}
-@font-face{font-family:"Awesome Serif Regular";font-style:normal;font-weight:400;font-display:swap;src:url("/fonts/Awesome_Serif_Regular_400_normal.woff2") format("woff2");}
-@font-face{font-family:"Inter";font-style:normal;font-weight:400;font-display:swap;src:url("/fonts/Inter_400_normal.woff2") format("woff2");}
-@font-face{font-family:"Inter";font-style:normal;font-weight:500;font-display:swap;src:url("/fonts/Inter_500_normal.woff2") format("woff2");}
-@font-face{font-family:"Inter";font-style:normal;font-weight:600;font-display:swap;src:url("/fonts/Inter_600_normal.woff2") format("woff2");}
-@font-face{font-family:"Inter";font-style:normal;font-weight:700;font-display:swap;src:url("/fonts/Inter_700_normal.woff2") format("woff2");}
-@font-face{font-family:"Inter";font-style:italic;font-weight:400;font-display:swap;src:url("/fonts/Inter_400_italic.woff2") format("woff2");}
-@font-face{font-family:"Inter Display";font-style:normal;font-weight:300;font-display:swap;src:url("/fonts/Inter_Display_300_normal.woff2") format("woff2");}
-@font-face{font-family:"Inter Display";font-style:normal;font-weight:400;font-display:swap;src:url("/fonts/Inter_Display_400_normal.woff2") format("woff2");}
-@font-face{font-family:"Inter Display";font-style:normal;font-weight:500;font-display:swap;src:url("/fonts/Inter_Display_500_normal.woff2") format("woff2");}
-@font-face{font-family:"Inter Display";font-style:normal;font-weight:600;font-display:swap;src:url("/fonts/Inter_Display_600_normal.woff2") format("woff2");}
-@font-face{font-family:"Inter Display";font-style:normal;font-weight:700;font-display:swap;src:url("/fonts/Inter_Display_700_normal.woff2") format("woff2");}
-@font-face{font-family:"Inter Display";font-style:italic;font-weight:400;font-display:swap;src:url("/fonts/Inter_Display_400_italic.woff2") format("woff2");}
-@font-face{font-family:"Inter Display";font-style:italic;font-weight:500;font-display:swap;src:url("/fonts/Inter_Display_500_italic.woff2") format("woff2");}
-@font-face{font-family:"Poppins";font-style:normal;font-weight:400;font-display:swap;src:url("/fonts/Poppins_400_normal.woff2") format("woff2");}
+@font-face {
+  font-family: "Rethink Sans";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("/fonts/Rethink_Sans_400_normal.woff2") format("woff2");
+}
+
+@font-face {
+  font-family: "Rethink Sans";
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url("/fonts/Rethink_Sans_500_normal.woff2") format("woff2");
+}
+
+@font-face {
+  font-family: "Rethink Sans";
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url("/fonts/Rethink_Sans_600_normal.woff2") format("woff2");
+}
+
+@font-face {
+  font-family: "Rethink Sans";
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url("/fonts/Rethink_Sans_700_normal.woff2") format("woff2");
+}
+
+@font-face {
+  font-family: "Awesome Serif Semi Bold Tall";
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url("/fonts/Awesome_Serif_Semi_Bold_Tall_600_normal.woff2") format("woff2");
+}
+
+@font-face {
+  font-family: "Awesome Serif Bold Tall";
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url("/fonts/Awesome_Serif_Bold_Tall_700_normal.woff2") format("woff2");
+}
+
+@font-face {
+  font-family: "Awesome Serif Italic Regular";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("/fonts/Awesome_Serif_Italic_Regular_400_normal.woff2") format("woff2");
+}
+
+@font-face {
+  font-family: "Awesome Serif Italic Bold Regular";
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url("/fonts/Awesome_Serif_Italic_Bold_Regular_700_normal.woff2") format("woff2");
+}
+
+@font-face {
+  font-family: "Awesome Serif Regular";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("/fonts/Awesome_Serif_Regular_400_normal.woff2") format("woff2");
+}
+
+@font-face {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("/fonts/Inter_400_normal.woff2") format("woff2");
+}
+
+@font-face {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url("/fonts/Inter_500_normal.woff2") format("woff2");
+}
+
+@font-face {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url("/fonts/Inter_600_normal.woff2") format("woff2");
+}
+
+@font-face {
+  font-family: "Inter";
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url("/fonts/Inter_700_normal.woff2") format("woff2");
+}
+
+@font-face {
+  font-family: "Inter";
+  font-style: italic;
+  font-weight: 400;
+  font-display: swap;
+  src: url("/fonts/Inter_400_italic.woff2") format("woff2");
+}
+
+@font-face {
+  font-family: "Inter Display";
+  font-style: normal;
+  font-weight: 300;
+  font-display: swap;
+  src: url("/fonts/Inter_Display_300_normal.woff2") format("woff2");
+}
+
+@font-face {
+  font-family: "Inter Display";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("/fonts/Inter_Display_400_normal.woff2") format("woff2");
+}
+
+@font-face {
+  font-family: "Inter Display";
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url("/fonts/Inter_Display_500_normal.woff2") format("woff2");
+}
+
+@font-face {
+  font-family: "Inter Display";
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url("/fonts/Inter_Display_600_normal.woff2") format("woff2");
+}
+
+@font-face {
+  font-family: "Inter Display";
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url("/fonts/Inter_Display_700_normal.woff2") format("woff2");
+}
+
+@font-face {
+  font-family: "Inter Display";
+  font-style: italic;
+  font-weight: 400;
+  font-display: swap;
+  src: url("/fonts/Inter_Display_400_italic.woff2") format("woff2");
+}
+
+@font-face {
+  font-family: "Inter Display";
+  font-style: italic;
+  font-weight: 500;
+  font-display: swap;
+  src: url("/fonts/Inter_Display_500_italic.woff2") format("woff2");
+}
+
+@font-face {
+  font-family: "Poppins";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("/fonts/Poppins_400_normal.woff2") format("woff2");
+}
 
 @theme inline {
   --color-bg: #00020F;
@@ -40,9 +193,14 @@
   --accent: #3362FF;
 }
 
-* { box-sizing: border-box; }
+* {
+  box-sizing: border-box;
+}
 
-html { -webkit-font-smoothing: antialiased; text-rendering: optimizeLegibility; }
+html {
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
 
 body {
   background: #00020F;
@@ -54,46 +212,422 @@ body {
 }
 
 /* ---------- Font utilities ---------- */
-.font-hero      { font-family: "Awesome Serif Semi Bold Tall", serif; font-weight: 600; }
-.font-display   { font-family: "Inter Display", "Inter", sans-serif; }
-.font-body      { font-family: "Inter", sans-serif; }
-.font-rethink   { font-family: "Rethink Sans", sans-serif; }
-.font-poppins   { font-family: "Poppins", sans-serif; }
+.font-hero {
+  font-family: "Playfair Display", Georgia, serif;
+  font-weight: 700;
+}
+
+.font-display {
+  font-family: "Inter Display", "Inter", sans-serif;
+}
+
+.font-body {
+  font-family: "DM Sans", sans-serif;
+}
+
+.font-rethink {
+  font-family: "Rethink Sans", sans-serif;
+}
+
+.font-poppins {
+  font-family: "Poppins", sans-serif;
+}
+
 /* italic serif accent inside headings */
-.serif-i        { font-family: "Awesome Serif Italic Regular", serif; font-style: normal; font-weight: 400; }
-.serif-hero-i   { font-family: "Awesome Serif Italic Regular", serif; font-style: normal; font-weight: 400; }
+.serif-i {
+  font-family: "Playfair Display", Georgia, serif;
+  font-style: italic;
+}
+
+.serif-hero-i {
+  font-family: "Playfair Display", Georgia, serif;
+  font-style: italic;
+}
 
 /* ---------- Layout helpers ---------- */
-.container-page { width: 100%; max-width: 1240px; margin-inline: auto; padding-inline: 24px; }
+.container-page {
+  width: 100%;
+  max-width: 1240px;
+  margin-inline: auto;
+  padding-inline: 24px;
+}
 
 /* ---------- Marquee ---------- */
-@keyframes marquee-left  { from { transform: translateX(0); }   to { transform: translateX(-50%); } }
-@keyframes marquee-right { from { transform: translateX(-50%); } to { transform: translateX(0); } }
-.marquee-track { display: flex; width: max-content; will-change: transform; }
-.marquee-left  { animation: marquee-left var(--dur,28s) linear infinite; }
-.marquee-right { animation: marquee-right var(--dur,28s) linear infinite; }
-.marquee-mask:hover .marquee-track { animation-play-state: paused; }
-.marquee-mask { -webkit-mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent); mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent); }
+@keyframes marquee-left {
+  from {
+    transform: translateX(0);
+  }
+
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+@keyframes marquee-right {
+  from {
+    transform: translateX(-50%);
+  }
+
+  to {
+    transform: translateX(0);
+  }
+}
+
+.marquee-track {
+  display: flex;
+  width: max-content;
+  will-change: transform;
+}
+
+.marquee-left {
+  animation: marquee-left var(--dur, 28s) linear infinite;
+}
+
+.marquee-right {
+  animation: marquee-right var(--dur, 28s) linear infinite;
+}
+
+.marquee-mask:hover .marquee-track {
+  animation-play-state: paused;
+}
+
+.marquee-mask {
+  -webkit-mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent);
+  mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent);
+}
 
 /* ---------- Buttons ---------- */
 .btn-primary {
-  display: inline-flex; align-items: center; gap: 10px; justify-content: center;
-  font-family: "Inter Display", sans-serif; font-weight: 500; font-size: 18px; color: #fff;
-  padding: 15px 26px; border-radius: 999px;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  justify-content: center;
+  font-family: "Inter Display", sans-serif;
+  font-weight: 500;
+  font-size: 18px;
+  color: #fff;
+  padding: 15px 26px;
+  border-radius: 999px;
   background: linear-gradient(180deg, #4C75FF 0%, #1A4FFF 100%);
-  box-shadow: 0 10px 30px -8px rgba(51,98,255,0.55), inset 0 1px 0 rgba(255,255,255,0.25);
+  box-shadow: 0 10px 30px -8px rgba(51, 98, 255, 0.55), inset 0 1px 0 rgba(255, 255, 255, 0.25);
   transition: filter .2s ease, transform .2s ease, box-shadow .2s ease;
-  cursor: pointer; border: none;
+  cursor: pointer;
+  border: none;
 }
-.btn-primary:hover { filter: brightness(1.08); transform: translateY(-1px); box-shadow: 0 14px 38px -8px rgba(51,98,255,0.7), inset 0 1px 0 rgba(255,255,255,0.3); }
-.btn-primary:active { transform: translateY(0) scale(.99); }
 
-.pill { border-radius: 999px; }
+.btn-primary:hover {
+  filter: brightness(1.08);
+  transform: translateY(-1px);
+  box-shadow: 0 14px 38px -8px rgba(51, 98, 255, 0.7), inset 0 1px 0 rgba(255, 255, 255, 0.3);
+}
 
-/* thin scrollbar hide for carousel */
-.no-scrollbar::-webkit-scrollbar { display: none; }
-.no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+.btn-primary:active {
+  transform: translateY(0) scale(.99);
+}
+
+.pill {
+  border-radius: 999px;
+}
+
+/* ---------- Button shine sweep ---------- */
+.btn-primary {
+  position: relative;
+  overflow: hidden;
+}
+
+.btn-primary::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(110deg, transparent 30%, rgba(255, 255, 255, 0.35) 50%, transparent 70%);
+  transform: translateX(-130%);
+  transition: transform .7s ease;
+}
+
+.btn-primary:hover::after {
+  transform: translateX(130%);
+}
+
+/* ---------- Hero FX ---------- */
+.hero-fx {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.aurora-orb {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(90px);
+  opacity: .5;
+  will-change: transform;
+}
+
+@keyframes drift1 {
+
+  0%,
+  100% {
+    transform: translate(0, 0) scale(1);
+  }
+
+  50% {
+    transform: translate(6vw, 4vh) scale(1.15);
+  }
+}
+
+@keyframes drift2 {
+
+  0%,
+  100% {
+    transform: translate(0, 0) scale(1.05);
+  }
+
+  50% {
+    transform: translate(-5vw, 5vh) scale(.9);
+  }
+}
+
+.orb-1 {
+  width: 46vw;
+  height: 46vw;
+  left: -12vw;
+  top: -14vw;
+  background: radial-gradient(circle, rgba(51, 98, 255, .55), transparent 65%);
+  animation: drift1 20s ease-in-out infinite;
+}
+
+.orb-2 {
+  width: 40vw;
+  height: 40vw;
+  right: -14vw;
+  top: -6vw;
+  background: radial-gradient(circle, rgba(26, 79, 255, .45), transparent 62%);
+  animation: drift2 26s ease-in-out infinite;
+}
+
+.orb-3 {
+  width: 30vw;
+  height: 30vw;
+  left: 34vw;
+  top: 12vw;
+  background: radial-gradient(circle, rgba(92, 126, 245, .28), transparent 66%);
+  animation: drift1 24s ease-in-out infinite reverse;
+}
+
+/* twinkling stars */
+.star {
+  position: absolute;
+  border-radius: 50%;
+  background: #cdd7ff;
+  animation: twinkle var(--tw, 3s) ease-in-out infinite;
+}
+
+@keyframes twinkle {
+
+  0%,
+  100% {
+    opacity: var(--o, .7);
+  }
+
+  50% {
+    opacity: .12;
+  }
+}
+
+/* supersonic comet streak */
+@keyframes comet {
+  0% {
+    transform: translate(-20vw, 42vh) rotate(-24deg);
+    opacity: 0;
+  }
+
+  8% {
+    opacity: 1;
+  }
+
+  40% {
+    opacity: 1;
+  }
+
+  55% {
+    transform: translate(120vw, -10vh) rotate(-24deg);
+    opacity: 0;
+  }
+
+  100% {
+    transform: translate(120vw, -10vh) rotate(-24deg);
+    opacity: 0;
+  }
+}
+
+.comet {
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 2px;
+  width: 260px;
+  background: linear-gradient(90deg, transparent, rgba(120, 150, 255, .9), #fff);
+  border-radius: 2px;
+  filter: drop-shadow(0 0 8px rgba(80, 120, 255, .9));
+  animation: comet 9s ease-in-out infinite;
+}
+
+.comet::before {
+  content: "";
+  position: absolute;
+  right: -3px;
+  top: -3px;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #fff;
+  box-shadow: 0 0 14px 4px rgba(120, 150, 255, .9);
+}
+
+/* animated gradient headline shimmer */
+.grad-shine {
+  background: linear-gradient(100deg, #ffffff 0%, #9fb4ff 30%, #3362FF 50%, #9fb4ff 70%, #ffffff 100%);
+  background-size: 220% 100%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  animation: shine 6s linear infinite;
+}
+
+@keyframes shine {
+  to {
+    background-position: 220% 0;
+  }
+}
+
+/* soft float loop for cards/badges */
+@keyframes floaty {
+
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-8px);
+  }
+}
+
+.floaty {
+  animation: floaty 6s ease-in-out infinite;
+}
 
 @media (prefers-reduced-motion: reduce) {
-  .marquee-left, .marquee-right { animation: none; }
+
+  .aurora-orb,
+  .star,
+  .comet,
+  .grad-shine,
+  .floaty,
+  .btn-primary::after {
+    animation: none !important;
+  }
+}
+
+/* thin scrollbar hide for carousel */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+
+  .marquee-left,
+  .marquee-right {
+    animation: none;
+  }
+}
+
+/* ---------- Blob Gooey Button ---------- */
+.blob-btn {
+  z-index: 1;
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  font-family: "DM Sans", "Inter Display", sans-serif;
+  font-weight: 700;
+  color: #ffffff !important;
+  padding: 14px 28px;
+  border-radius: 9999px;
+  background: transparent;
+  outline: none;
+  border: none;
+  transition: color 0.4s ease, transform 0.2s ease, box-shadow 0.3s ease;
+  cursor: pointer;
+  overflow: hidden;
+  text-decoration: none;
+  box-shadow: 0 8px 28px -6px rgba(51, 98, 255, 0.5);
+}
+
+.blob-btn:hover {
+  color: #1a4dff !important;
+  box-shadow: 0 12px 35px -4px rgba(255, 255, 255, 0.4);
+}
+
+.blob-btn__inner {
+  z-index: 0;
+  overflow: hidden;
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: 9999px;
+  background: linear-gradient(180deg, #3763ff 0%, #1a4dff 100%);
+}
+
+.blob-btn__blobs {
+  position: relative;
+  display: block;
+  height: 100%;
+  width: 100%;
+  filter: url('#goo');
+}
+
+.blob-btn__blob {
+  position: absolute;
+  top: 2px;
+  width: 34%;
+  height: 100%;
+  background: #ffffff;
+  border-radius: 100%;
+  transform: translate3d(0, 150%, 0) scale(1.7);
+  transition: transform 0.45s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.blob-btn__blob:nth-child(1) {
+  left: -4%;
+  transition-delay: 0s;
+}
+
+.blob-btn__blob:nth-child(2) {
+  left: 24%;
+  transition-delay: 0.08s;
+}
+
+.blob-btn__blob:nth-child(3) {
+  left: 52%;
+  transition-delay: 0.16s;
+}
+
+.blob-btn__blob:nth-child(4) {
+  left: 80%;
+  transition-delay: 0.24s;
+}
+
+.blob-btn:hover .blob-btn__blob {
+  transform: translate3d(0, 0, 0) scale(1.7);
 }

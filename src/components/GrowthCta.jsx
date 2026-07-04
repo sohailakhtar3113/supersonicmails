@@ -23,7 +23,7 @@ export default function GrowthCta() {
           </Reveal>
           <Reveal variants={revealSm}>
             <p className="font-body mt-6 text-[18px] font-medium leading-[1.6] text-[#A7ADBE]">
-              We&apos;ve helped 105+ brands generate over $150M in backend revenue by fixing what happens after the first purchase. Customer value compounds. LTV climbs. LTV:CAC improves. Without a single extra dollar on ads.
+              We&apos;ve helped 35+ brands generate 7-figures in backend revenue by fixing what happens after the first purchase. Customer value compounds. LTV climbs. LTV:CAC improves. Without a single extra dollar on ads.
             </p>
           </Reveal>
         </Stagger>
