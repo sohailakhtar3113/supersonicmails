@@ -43,7 +43,7 @@ export const STATS = [
   { value: "7-Figs", label: "Revenue Generated" },
   { value: "35+", label: "Brands Scaled" },
   { value: "2M+", label: "Emails Sending Every Month" },
-  { value: "64%", label: "Max Returning Customer Rate" },
+  { value: "64%", label: "Maximum Returning Customer Rate" },
 ];
 
 export const PARTNERS = [

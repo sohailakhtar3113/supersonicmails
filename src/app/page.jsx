@@ -3,14 +3,9 @@ import Hero from "@/components/Hero";
 import BrandTrust from "@/components/BrandTrust";
 import StatsPartners from "@/components/StatsPartners";
 import Vsl from "@/components/Vsl";
-import Testimonials from "@/components/Testimonials";
+import ShortsShowcase from "@/components/ShortsShowcase";
 import Reviews from "@/components/Reviews";
-import GrowthCta from "@/components/GrowthCta";
 import Comparison from "@/components/Comparison";
-import Campaigns from "@/components/Campaigns";
-import Process from "@/components/Process";
-import CaseStudies from "@/components/CaseStudies";
-import Guarantee from "@/components/Guarantee";
 import Faq from "@/components/Faq";
 import FinalCta from "@/components/FinalCta";
 import Footer from "@/components/Footer";
@@ -20,20 +15,22 @@ export default function Home() {
     <>
       <Navbar />
       <main className="overflow-hidden">
+        {/* Hero — preheadline, headline, guarantee subtext, CTA, 5★ reviews */}
         <Hero />
+        {/* Social proof — brands that trust us */}
         <BrandTrust />
+        {/* Trusted Partners (Shopify, Klaviyo, Omnisend) + headline stats */}
         <StatsPartners />
-        <Vsl />
-        <Testimonials />
-        <Reviews />
-        <GrowthCta />
+        {/* See How We Can Help (VSL) */}
+        {/* <Vsl /> */}
+        {/* Hear From Our Fastest Scaling Brand Owners (2 shorts) + CTA */}
+        <ShortsShowcase />
+        {/* Trustpilot reviews */}
+        {/* <Reviews /> */}
+        {/* Other Agencies vs Supersonic Mails */}
         <Comparison />
-        <Campaigns />
-        <Process />
-        <CaseStudies />
-        <Guarantee />
-        <Faq />
-        <FinalCta />
+        {/* <Faq /> */}
+        {/* <FinalCta /> */}
       </main>
       <Footer />
     </>

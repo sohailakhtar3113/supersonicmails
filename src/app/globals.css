@@ -185,6 +185,7 @@
   --color-accent: #3362FF;
   --font-display: "Inter Display", "Inter", sans-serif;
   --font-body: "Inter", sans-serif;
+  --animate-meteor: meteor 5s linear infinite;
 }
 
 :root {
@@ -250,6 +251,23 @@ body {
   max-width: 1240px;
   margin-inline: auto;
   padding-inline: 24px;
+}
+
+/* ---------- Meteors (Magic UI) ---------- */
+@keyframes meteor {
+  0% {
+    transform: rotate(var(--angle)) translateX(0);
+    opacity: 1;
+  }
+
+  70% {
+    opacity: 1;
+  }
+
+  100% {
+    transform: rotate(var(--angle)) translateX(-500px);
+    opacity: 0;
+  }
 }
 
 /* ---------- Marquee ---------- */
@@ -499,6 +517,17 @@ body {
 @keyframes shine {
   to {
     background-position: 220% 0;
+  }
+}
+
+/* rotating conic border light (stat bento) */
+@keyframes beam-spin {
+  from {
+    transform: translate(-50%, -50%) rotate(0deg);
+  }
+
+  to {
+    transform: translate(-50%, -50%) rotate(360deg);
   }
 }
 

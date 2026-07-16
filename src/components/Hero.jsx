@@ -4,7 +4,7 @@ import { ApplyButton, Badge, TrustRow } from "./ui";
 import { EASE_OUT } from "./motion";
 import HeroFx from "./HeroFx";
 import Image from "next/image";
-import LogoBrand from "./LogoBrand";
+import ScrollVelocity from "./ScrollVelocity";
 
 const line1 = ["Make", "More", "Profits"];
 const line2 = ["Without", "Running", "More", "Ads"];
@@ -34,7 +34,7 @@ export default function Hero() {
           {/* Left side — text content */}
           <div className="flex-1 flex flex-col items-center lg:items-start text-center lg:text-left min-w-0">
             <motion.div initial={{ opacity: 0, y: 18 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, ease: EASE_OUT }}>
-              <Badge dot>FOR ECOM BRANDS SCALING PAST $100K/MONTH</Badge>
+              <Badge dot>FOR ECOM BRANDS ALREADY SCALING PAST $100K/MONTH</Badge>
             </motion.div>
 
             <motion.h1
@@ -77,10 +77,11 @@ export default function Hero() {
               transition={{ delay: 0.55 }}
               className="font-body mt-7 max-w-[540px] text-[17px] font-medium leading-[1.7] text-[#A7ADBE]"
             >
-              Turn browse abandoners into{" "}
-              <span className="font-semibold text-white">loyal repeat buyers</span> and extract{" "}
-              <span className="font-semibold text-[#9fb4ff]">20–45% new monthly revenue</span> — through a newly
-              discovered, ROI-first retention framework.
+              Boost <span className="font-semibold text-white">LTV</span>, reduce{" "}
+              <span className="font-semibold text-white">churn</span>, and make an additional{" "}
+              <span className="font-semibold text-[#9fb4ff]">20–45% new monthly revenue</span> — or we&apos;ll
+              work for free &amp; send you <span className="font-semibold text-white">$500</span> for wasting
+              your time.
             </motion.p>
 
             <motion.div
@@ -124,19 +125,31 @@ export default function Hero() {
         </div>
       </div>
 
-      {/* ── Infinite Left-Scrolling Logo Banner (Blue lines top & bottom) ── */}
-      <div className="relative z-10 mt-16 sm:mt-24 w-full border-y border-[#3362FF]/50 bg-[#06091a]/80 py-6 overflow-hidden shadow-[0_0_30px_rgba(51,98,255,0.15)]">
+      {/* ── Scroll-velocity branding band (Magic UI ScrollVelocity) ── */}
+      <div className="relative z-10 mt-16 sm:mt-24 w-full overflow-hidden border-y border-[#3362FF]/50 bg-[#06091a]/80 py-6 shadow-[0_0_30px_rgba(51,98,255,0.15)]">
         {/* Glowing Top Blue Accent Line */}
         <div className="absolute inset-x-0 top-0 h-[1.5px] bg-gradient-to-r from-transparent via-[#3362FF] to-transparent opacity-90" />
 
-        <div className="marquee-mask w-full overflow-hidden" style={{ "--dur": "28s" }}>
-          <div className="marquee-track marquee-left items-center">
-            {Array.from({ length: 16 }).map((_, i) => (
-              <div key={i} className="shrink-0 mx-10 sm:mx-14 py-1">
-                <LogoBrand size="sm" />
-              </div>
-            ))}
-          </div>
+        <div className="marquee-mask w-full">
+          <ScrollVelocity defaultVelocity={5} className="pr-8 sm:pr-12">
+            <span
+              className="font-hero bg-gradient-to-b from-white to-[#8FA6DE] bg-clip-text uppercase tracking-[0.02em] text-transparent"
+              style={{ fontSize: "clamp(26px, 3.4vw, 48px)", lineHeight: 1 }}
+            >
+              Supersonic&nbsp;Mails
+            </span>
+            <svg
+              viewBox="0 0 24 24"
+              aria-hidden
+              className="mx-6 h-4 w-4 shrink-0 text-[#3362FF] sm:mx-9 sm:h-5 sm:w-5"
+              style={{ filter: "drop-shadow(0 0 6px rgba(51,98,255,0.7))" }}
+            >
+              <path
+                fill="currentColor"
+                d="M12 0c.7 5.1 1.8 8.3 3.4 9.9C17 11.5 20.2 12.6 24 12c-3.8.7-6.9 1.8-8.6 3.4C13.8 17 12.7 20.2 12 24c-.7-3.8-1.8-6.9-3.4-8.6C7 13.8 3.8 12.7 0 12c3.8-.6 7-1.7 8.6-3.4C10.2 7 11.3 3.8 12 0Z"
+              />
+            </svg>
+          </ScrollVelocity>
         </div>
 
         {/* Glowing Bottom Blue Accent Line */}
