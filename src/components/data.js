@@ -97,9 +97,41 @@ export const CAMPAIGNS = [
 ];
 
 export const STAGES = [
-  { n: "01", title: "Deep Research", lead: "Before we touch Klaviyo, we learn your brand inside out.", items: ["Customer avatar, desires, objections mapped", "Competitor audit and gap analysis", "Foundational brand and market documents built", "Every flow starts from real intelligence, not templates"] },
-  { n: "02", title: "Iteration", lead: "Strategy becomes execution. In under 2 weeks.", items: ["Full Klaviyo setup: flows, campaigns, segmentation", "Copywriting and design handled end-to-end", "Deliverability protected from day one", "AOV and LTV mechanisms baked into every touchpoint"] },
-  { n: "03", title: "Optimization & Scale", lead: "This is where most agencies stop. For us, this is where it compounds.", items: ["A/B testing and automation refinement every month", "Personalization through zero-party customer data", "New flows added as your brand grows", "Subscription systems integrated. New offers tested."] },
+  {
+    n: "01",
+    title: "Deep Research",
+    lead: "Before we touch Klaviyo, we map your brand's growth blueprint based on raw data.",
+    items: [
+      "Instant Alignment: Onboarding forms capture your business goals.",
+      "Psychological Mapping: Customer avatars and conversion triggers mapped.",
+      "Competitor Audit: Auditing rival strategies to steal market share.",
+      "Custom Architecture: Systems built from raw data, not templates.",
+    ],
+  },
+  {
+    n: "02",
+    title: "Supersonic Deployment",
+    lead: "Agencies take 21+ days. We deploy instantly.",
+    items: [
+      "The 24-Hour Sprint: First sales email live in 24 hours.",
+      "Core Buildout: 50+ emails and 8+ flows in 7 days.",
+      "End-to-End Creative: Direct-response copy and premium design handled.",
+      "Strategic Deliverability: Deep technical setup and meticulous Klaviyo warming.",
+      "Consistent Campaigns: 3 to 4 hyper-segmented campaigns weekly.",
+      "Spam Management: Continuous optimization to dominate the primary inbox.",
+    ],
+  },
+  {
+    n: "03",
+    title: "Optimization & Scale",
+    lead: "Most agencies stop here. We compound profit.",
+    items: [
+      "Aggressive A/B Testing: Constantly doubling down on what drives profit.",
+      "Real-Time Data: Scaling based on tracked revenue numbers.",
+      "Behavioral Personalization: Segmentation driven by zero-party customer insights.",
+      "Continuous Expansion: Deploying new flows as your brand scales.",
+    ],
+  },
 ];
 
 export const CASES = [

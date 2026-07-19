@@ -20,9 +20,9 @@ export default function Process() {
         {/* Sticky left */}
         <div className="lg:sticky lg:top-32 lg:h-fit">
           <Reveal>
-            <Badge dot className="mb-6">RETENTION GROWTH SYSTEM</Badge>
+            <Badge dot className="mb-6">OUR FRAMEWORK</Badge>
             <h2 className="font-display text-[34px] leading-[1.15] text-white md:text-[42px] md:leading-[50px]" style={{ letterSpacing: "-0.42px" }}>
-              How We Scale Your <br /><span className="serif-i">Brand Profitably</span>
+              Our <span className="serif-i">8-Fig Scaling</span> Framework
             </h2>
             <div className="mt-8 flex flex-col items-start gap-6">
               <ApplyButton />
@@ -47,12 +47,25 @@ export default function Process() {
                   <h3 className="font-display mt-5 text-[22px] font-medium text-white md:text-[24px]">{s.title}</h3>
                   <p className="font-body mt-2 text-[16px] text-[#A7ADBE]">{s.lead}</p>
                   <ul className="mt-5 flex flex-col gap-2.5">
-                    {s.items.map((it) => (
-                      <li key={it} className="font-body flex gap-3 text-[16px] text-[#A7ADBE]">
-                        <span className="mt-2 h-1 w-1 shrink-0 rounded-full bg-[#A7ADBE]" />
-                        {it}
-                      </li>
-                    ))}
+                    {s.items.map((it) => {
+                      const [lead, ...rest] = it.split(":");
+                      const detail = rest.join(":").trim();
+                      return (
+                        <li key={it} className="font-body flex gap-3 text-[16px] text-[#A7ADBE]">
+                          <span className="mt-[9px] h-1 w-1 shrink-0 rounded-full bg-[#3362FF]" />
+                          <span>
+                            {detail ? (
+                              <>
+                                <span className="font-medium text-white">{lead}:</span>{" "}
+                                {detail}
+                              </>
+                            ) : (
+                              it
+                            )}
+                          </span>
+                        </li>
+                      );
+                    })}
                   </ul>
                 </motion.div>
               </Reveal>

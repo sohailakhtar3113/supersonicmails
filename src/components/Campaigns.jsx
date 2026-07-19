@@ -24,9 +24,9 @@ export default function Campaigns() {
   return (
     <section className="relative py-16 md:py-24">
       <Reveal className="container-page mb-12 text-center">
-        <h2 className="font-display text-[32px] leading-[1.15] text-white md:text-[50px] md:leading-[60px]" style={{ letterSpacing: "-0.5px" }}>
-          A Look Inside The Campaigns<br />
-          <span className="serif-i">Driving 7-Figure Revenue</span>
+        <h2 className="font-display mx-auto max-w-[900px] text-[30px] leading-[1.15] text-white md:text-[46px] md:leading-[56px]" style={{ letterSpacing: "-0.5px" }}>
+          Designs That&rsquo;ve Been Printing An Extra{" "}
+          <span className="serif-i">7 Figs/Year</span> For Our Partner Brands
         </h2>
       </Reveal>
 

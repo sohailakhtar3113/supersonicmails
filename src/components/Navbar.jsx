@@ -32,12 +32,12 @@ export default function Navbar() {
       >
         {/* Logo */}
         <a href="#" className="shrink-0">
-          <LogoBrand />
+          <LogoBrand hideTextOnMobile />
         </a>
 
         {/* Right CTA Button */}
         <div>
-          <ApplyButton className="!py-2.5 sm:!py-3 !px-4 sm:!px-5 !text-[15px] sm:!text-[16px]" />
+          <ApplyButton className="!py-2 sm:!py-3 !px-3.5 sm:!px-5 !text-[13px] sm:!text-[16px]" />
         </div>
       </nav>
     </motion.header>

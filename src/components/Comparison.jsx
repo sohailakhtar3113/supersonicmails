@@ -18,13 +18,13 @@ export default function Comparison() {
 
       {/* Column headers */}
       <div className="relative z-10 mx-auto grid max-w-[1120px] grid-cols-2 items-center">
-        <div className="pl-2 text-[22px] font-semibold text-white md:pl-6 md:text-[30px]">Other Agencies</div>
+        <div className="pl-2 text-[17px] font-semibold text-white sm:text-[22px] md:pl-6 md:text-[30px]">Other Agencies</div>
         <div className="flex items-center justify-end gap-3 pr-2 md:pr-6">
-          <img src={ASSET.logoMark} alt="Supersonic Mails" className="h-7 w-auto md:h-9" />
+          <img src={ASSET.logoMark} alt="Supersonic Mails" className="h-6 w-auto sm:h-7 md:h-9" />
         </div>
-        <div className="pointer-events-none absolute left-1/2 top-1/2 z-20 flex h-[70px] w-[70px] -translate-x-1/2 -translate-y-1/2 items-center justify-center">
+        <div className="pointer-events-none absolute left-1/2 top-1/2 z-20 flex h-[52px] w-[52px] -translate-x-1/2 -translate-y-1/2 items-center justify-center md:h-[70px] md:w-[70px]">
           <img src={ASSET.versus} alt="" className="absolute inset-0 h-full w-full" />
-          <span className="font-display text-[15px] font-semibold text-white">V/S</span>
+          <span className="font-display text-[12px] font-semibold text-white md:text-[15px]">V/S</span>
         </div>
       </div>
 

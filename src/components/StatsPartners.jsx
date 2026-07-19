@@ -47,12 +47,11 @@ const STAT_ITEMS = [
   {
     key: "revenue",
     icon: IconRevenue,
-    eyebrow: "Revenue generated",
+    eyebrow: "Revenue driven",
     value: 7,
     suffix: "-Figs",
-    label: "in tracked revenue driven",
     blurb:
-      "Real, attributable revenue produced for the brands we partner with — not vanity opens.",
+      "7-Figures in strictly tracked, attributable backend revenue driven for our partners.",
     hero: true,
   },
   {
@@ -61,7 +60,9 @@ const STAT_ITEMS = [
     eyebrow: "Portfolio",
     value: 35,
     suffix: "+",
-    label: "Brands scaled",
+    unit: "Brands",
+    blurb:
+      "Scaled past their plateaus by plugging into our ROI-First Retention Systems.",
   },
   {
     key: "emails",
@@ -69,15 +70,19 @@ const STAT_ITEMS = [
     eyebrow: "Volume",
     value: 2,
     suffix: "M+",
-    label: "Emails sent monthly",
+    unit: "Monthly",
+    blurb:
+      "High-deliverability emails sent without burning list health or sacrificing margins.",
   },
   {
     key: "returning",
     icon: IconRepeat,
     eyebrow: "Retention",
+    prefix: "Maximum ",
     value: 64,
     suffix: "%",
-    label: "Returning customer rate",
+    blurb:
+      "Returning customer rate achieved by replacing generic newsletter blasts with behavioral flows.",
   },
 ];
 
@@ -215,7 +220,7 @@ function StatShell({ item, start, className = "" }) {
       />
 
       {/* Content */}
-      <div className="relative z-10 flex h-full flex-col justify-between p-6 md:p-7">
+      <div className="relative z-10 flex h-full flex-col justify-between gap-5 p-5 md:p-6">
         <div className="flex items-center gap-2.5">
           <IconBadge
             Icon={item.icon}
@@ -227,36 +232,37 @@ function StatShell({ item, start, className = "" }) {
           </span>
         </div>
 
-        <div className={item.hero ? "mt-8" : "mt-6"}>
+        <div>
           <div
-            className="flex items-end font-display text-white"
+            className="flex flex-wrap items-end font-display text-white"
             style={{
               fontSize: item.hero
-                ? "clamp(58px, 7.4vw, 108px)"
-                : "clamp(42px, 4.6vw, 62px)",
+                ? "clamp(48px, 5.6vw, 84px)"
+                : "clamp(34px, 3.4vw, 46px)",
               fontWeight: 600,
               lineHeight: 0.9,
               letterSpacing: "-0.02em",
             }}
           >
+            {item.prefix && <span>{item.prefix}</span>}
             <NumberTicker value={item.value} start={start} />
             <span className="text-[#9fb4ff]">{item.suffix}</span>
+            {item.unit && (
+              <span className="ml-2 text-[0.4em] font-medium text-[#E1E3E9]">
+                {item.unit}
+              </span>
+            )}
           </div>
 
-          {item.hero ? (
-            <>
-              <p className="font-body mt-4 text-[17px] font-medium text-[#E1E3E9]">
-                {item.label}
-              </p>
-              <p className="font-body mt-2 max-w-[300px] text-[14px] leading-relaxed text-[#8A90A2]">
-                {item.blurb}
-              </p>
-            </>
-          ) : (
-            <p className="font-body mt-2 text-[15px] font-medium text-[#A7ADBE]">
-              {item.label}
-            </p>
-          )}
+          <p
+            className={`font-body leading-relaxed text-[#8A90A2] ${
+              item.hero
+                ? "mt-3 max-w-[360px] text-[15px]"
+                : "mt-2.5 text-[13.5px]"
+            }`}
+          >
+            {item.blurb}
+          </p>
         </div>
       </div>
     </motion.div>
@@ -301,12 +307,11 @@ export default function StatsPartners() {
               letterSpacing: "-0.02em",
             }}
           >
-            Retention that turns into{" "}
-            <span className="serif-i">real revenue</span>
+            Engineered For <span className="serif-i">8-Figure Brands</span>
           </h2>
           <p className="font-body mt-4 max-w-xl text-[17px] leading-relaxed text-[#A7ADBE]">
-            Four numbers that separate a genuine retention partner from just
-            another email agency.
+            We&rsquo;ll turn your email list into your highest-margin sales
+            channel or you don&rsquo;t pay.
           </p>
         </motion.div>
 
@@ -317,20 +322,20 @@ export default function StatsPartners() {
           initial="hidden"
           whileInView="show"
           viewport={{ once: true, amount: 0.2 }}
-          className="grid grid-cols-1 gap-4 sm:grid-cols-2 md:auto-rows-[minmax(160px,1fr)] md:grid-cols-4 md:gap-5"
+          className="grid grid-cols-1 gap-4 sm:grid-cols-2 md:auto-rows-[minmax(168px,auto)] md:grid-cols-4 md:gap-4"
         >
           <StatShell
             item={STAT_ITEMS[0]}
             start={started}
-            className="min-h-[248px] sm:col-span-2 md:col-span-2 md:row-span-2 md:min-h-0"
+            className="min-h-[220px] sm:col-span-2 md:col-span-2 md:row-span-2 md:min-h-0"
           />
           <StatShell
             item={STAT_ITEMS[1]}
             start={started}
-            className="min-h-[160px] sm:col-span-2 md:col-span-2"
+            className="min-h-[168px] sm:col-span-2 md:col-span-2"
           />
-          <StatShell item={STAT_ITEMS[2]} start={started} className="min-h-[160px]" />
-          <StatShell item={STAT_ITEMS[3]} start={started} className="min-h-[160px]" />
+          <StatShell item={STAT_ITEMS[2]} start={started} className="min-h-[168px]" />
+          <StatShell item={STAT_ITEMS[3]} start={started} className="min-h-[168px]" />
         </motion.div>
       </div>
     </section>

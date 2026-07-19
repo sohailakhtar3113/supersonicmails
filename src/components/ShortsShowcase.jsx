@@ -114,14 +114,10 @@ export default function ShortsShowcase() {
           </p>
           <h2
             className="mt-3 font-serif text-3xl font-semibold leading-tight text-white sm:text-4xl md:text-[44px]"
-            style={{ fontFamily: "'Playfair Display', Georgia, serif" }}
+            style={{ fontFamily: "'Clash Display', Georgia, serif" }}
           >
             Hear From Our Fastest Scaling Brand Owners
           </h2>
-          <p className="mt-4 font-rethink text-[16px] leading-relaxed text-[#A7ADBE] md:text-[17px]">
-            Real founders. Real inboxes. Real growth — straight from the brands
-            we scale every day.
-          </p>
         </Reveal>
 
         <Stagger className="mt-12 flex flex-wrap items-start justify-center gap-6 md:mt-16 md:gap-10">

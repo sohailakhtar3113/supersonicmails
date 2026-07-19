@@ -29,6 +29,9 @@ const ROW_TWO = [
   { slug: "calmnest", name: "calmnest", h: 32, invert: true },
 ];
 
+// Global size factor so every mark scales down together (kept small & premium).
+const LOGO_SCALE = 0.72;
+
 function LogoItem({ logo }) {
   return (
     <div className="group/logo flex shrink-0 items-center justify-center px-8 sm:px-12 md:px-16">
@@ -37,7 +40,7 @@ function LogoItem({ logo }) {
         alt={logo.name}
         draggable={false}
         loading="lazy"
-        style={{ height: logo.h }}
+        style={{ height: Math.round(logo.h * LOGO_SCALE) }}
         className={`w-auto object-contain opacity-70 transition duration-300 ease-out will-change-transform group-hover/logo:opacity-100 group-hover/logo:scale-[1.07] ${
           logo.invert ? "[filter:brightness(0)_invert(1)]" : ""
         }`}
@@ -87,7 +90,7 @@ export default function BrandTrust() {
         {/* Section Heading */}
         <h2
           className="font-serif text-2xl sm:text-3xl md:text-4xl lg:text-[42px] font-semibold text-white tracking-normal leading-tight"
-          style={{ fontFamily: "'Playfair Display', Georgia, serif" }}
+          style={{ fontFamily: "'Clash Display', Georgia, serif" }}
         >
           The World’s Top Brands{" "}
           <span className="relative inline-block mx-1 sm:mx-1.5 rounded-[4px] px-3 py-0.5 align-baseline">
@@ -108,8 +111,8 @@ export default function BrandTrust() {
 
       {/* Brand Logos Marquee (full-bleed for a premium edge-to-edge ticker) */}
       <div className="relative z-10 mt-14 sm:mt-16 flex flex-col gap-6 md:gap-8">
-        <LogoRow logos={ROW_ONE} direction="left" duration="46s" />
-        <LogoRow logos={ROW_TWO} direction="right" duration="40s" />
+        <LogoRow logos={ROW_ONE} direction="left" duration="88s" />
+        <LogoRow logos={ROW_TWO} direction="right" duration="80s" />
       </div>
     </section>
   );

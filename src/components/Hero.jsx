@@ -24,7 +24,7 @@ const item = {
 
 export default function Hero() {
   return (
-    <section className="relative overflow-hidden pt-[150px] pb-0">
+    <section className="relative overflow-hidden pt-[118px] md:pt-[150px] pb-0">
       <HeroFx />
 
       <div className="container-page relative z-10">
@@ -41,8 +41,8 @@ export default function Hero() {
               variants={wordC}
               initial="hidden"
               animate="show"
-              className="font-hero mt-8 text-white w-full"
-              style={{ fontSize: "clamp(34px, 4.8vw, 68px)", lineHeight: 1.08, letterSpacing: "-0.01em" }}
+              className="font-hero mt-7 md:mt-8 text-white w-full text-[length:clamp(30px,8.4vw,64px)] lg:text-[length:clamp(34px,4.8vw,68px)]"
+              style={{ lineHeight: 1.08, letterSpacing: "-0.01em" }}
             >
               <span className="block whitespace-nowrap">
                 {line1.map((w, i) => (

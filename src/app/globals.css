@@ -1,5 +1,54 @@
 @import "tailwindcss";
 
+/* ---------- Clash Display (self-hosted, replaces Playfair Display) ---------- */
+@font-face {
+  font-family: "Clash Display";
+  font-style: normal;
+  font-weight: 200;
+  font-display: swap;
+  src: url("/fonts/clash/ClashDisplay-Extralight.otf") format("opentype");
+}
+
+@font-face {
+  font-family: "Clash Display";
+  font-style: normal;
+  font-weight: 300;
+  font-display: swap;
+  src: url("/fonts/clash/ClashDisplay-Light.otf") format("opentype");
+}
+
+@font-face {
+  font-family: "Clash Display";
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url("/fonts/clash/ClashDisplay-Regular.otf") format("opentype");
+}
+
+@font-face {
+  font-family: "Clash Display";
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url("/fonts/clash/ClashDisplay-Medium.otf") format("opentype");
+}
+
+@font-face {
+  font-family: "Clash Display";
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url("/fonts/clash/ClashDisplay-Semibold.otf") format("opentype");
+}
+
+@font-face {
+  font-family: "Clash Display";
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url("/fonts/clash/ClashDisplay-Bold.otf") format("opentype");
+}
+
 /* ---------- Self-hosted fonts (real Framer woff2) ---------- */
 @font-face {
   font-family: "Rethink Sans";
@@ -214,8 +263,8 @@ body {
 
 /* ---------- Font utilities ---------- */
 .font-hero {
-  font-family: "Playfair Display", Georgia, serif;
-  font-weight: 700;
+  font-family: "Clash Display", Georgia, serif;
+  font-weight: 500;
 }
 
 .font-display {
@@ -234,15 +283,16 @@ body {
   font-family: "Poppins", sans-serif;
 }
 
-/* italic serif accent inside headings */
+/* display accent inside headings — Clash Display has no true italic, so the
+   accent reads upright; the distinctive display face is the differentiator. */
 .serif-i {
-  font-family: "Playfair Display", Georgia, serif;
-  font-style: italic;
+  font-family: "Clash Display", Georgia, serif;
+  font-style: normal;
 }
 
 .serif-hero-i {
-  font-family: "Playfair Display", Georgia, serif;
-  font-style: italic;
+  font-family: "Clash Display", Georgia, serif;
+  font-style: normal;
 }
 
 /* ---------- Layout helpers ---------- */
@@ -312,6 +362,34 @@ body {
 .marquee-mask {
   -webkit-mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent);
   mask-image: linear-gradient(90deg, transparent, #000 8%, #000 92%, transparent);
+}
+
+/* ---------- Design showcase: tall email designs inside a fixed-height,
+   user-scrollable viewport. JS auto-glides scrollTop when idle; on hover or
+   touch the visitor scrolls the full design manually. The image keeps its
+   natural width/resolution, so nothing is squished or blurry. ---------- */
+.design-scroll {
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(51, 98, 255, 0.55) rgba(255, 255, 255, 0.06);
+}
+
+.design-scroll::-webkit-scrollbar {
+  width: 5px;
+}
+
+.design-scroll::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.design-scroll::-webkit-scrollbar-thumb {
+  background: rgba(51, 98, 255, 0.55);
+  border-radius: 999px;
+}
+
+.design-scroll::-webkit-scrollbar-thumb:hover {
+  background: rgba(51, 98, 255, 0.85);
 }
 
 /* ---------- Buttons ---------- */

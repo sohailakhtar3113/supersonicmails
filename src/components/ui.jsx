@@ -60,7 +60,7 @@ export function ApplyButton({ label = "Claim a Free Audit", className = "" }) {
 export function Badge({ children, dot = false, className = "" }) {
   return (
     <span
-      className={`inline-flex items-center gap-2 rounded-full px-4 py-2 text-[15px] text-[#A7ADBE] ${className}`}
+      className={`inline-flex max-w-full items-center gap-2 rounded-full px-3.5 py-1.5 text-[12.5px] sm:px-4 sm:py-2 sm:text-[15px] text-[#A7ADBE] ${className}`}
       style={{
         background: "rgba(255,255,255,0.04)",
         border: "1px solid rgba(255,255,255,0.08)",
