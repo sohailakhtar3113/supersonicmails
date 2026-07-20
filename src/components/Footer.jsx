@@ -22,6 +22,9 @@ export default function Footer() {
             <div className="mt-10 flex flex-col items-start gap-6">
               <ApplyButton />
               <TrustRow />
+              <a href="https://thetoolsverse.com" target="_blank" rel="noopener">
+                <img src="https://thetoolsverse.com/badges/toolsverse-light.png" alt="Featured on TheToolsVerse — AI Tools Directory" width="300" height="80" />
+              </a>
             </div>
           </div>
           <div className="flex flex-col items-start justify-between gap-10 md:items-end">
