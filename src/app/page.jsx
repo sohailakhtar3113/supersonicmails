@@ -19,7 +19,10 @@ export default function Home() {
   return (
     <>
       <Navbar />
-      <main className="overflow-hidden">
+      {/* overflow-x-clip, not overflow-hidden: `hidden` makes main a scroll
+          container, which silently breaks `position: sticky` in every
+          descendant. `clip` contains the marquees without doing that. */}
+      <main className="overflow-x-clip">
         {/* Hero — preheadline, headline, guarantee subtext, CTA, 5★ reviews */}
         <Hero />
         {/* Social proof — brands that trust us */}
@@ -43,9 +46,8 @@ export default function Home() {
         <Process />
         {/* Case Studies — The Results Speak For Themselves */}
         {/* <CaseStudies /> */}
-        {/* Designs printing 7 figs/year — the design wall (before FAQs) */}
-
-        {/* <Faq /> */}
+        {/* Frequently Asked Questions */}
+        <Faq />
         {/* <FinalCta /> */}
       </main>
       <Footer />

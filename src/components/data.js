@@ -18,10 +18,6 @@ export const ASSET = {
   beamR: `${A}/s86pE6NdLKAVI3DiqWQs31H8Ufk.svg`,
   reviewCardBg: `${A}/Vy5fY5tvzYvO3kc3PMsfNrzzvDY.svg`,
   stars: `${A}/9zczHxJ0hKdUwjvDhMo28VT5Cug.svg`,
-  versus: `${A}/UaNueSPHaU4uAnBboSMnR7WEc8.svg`,
-  cross: `${A}/Rdwuxg7HhYamCPJxEymFO43pzQ.webp`,
-  check: `${A}/L7TFllF4rXiELXgyitz9ctpXrI.webp`,
-  hatch: `${A}/AdPfwI4laWSMfyInnvNTBjrcR0.svg`,
   caseCardBg: `${A}/lVMga4rUZKgcCmuJunHZSHKYU.svg`,
   ray: `${A}/Q7jYdegm6ose91yjy9ffKEkCqs.svg`,
   wingsL: `${A}/aoWeUd6Z5b0pFEysKgqvrxwTY.png`,
@@ -144,11 +140,34 @@ export const CASES = [
 ];
 
 export const FAQ = [
-  { q: "What results can I expect in the first 90 days?", a: "Most brands see email and SMS driving 25-40% of total revenue within 90 days, with LTV:CAC improving to 4+:1. Our 90-day guarantee covers you." },
-  { q: "What's the time commitment on our end?", a: "Minimal. Your dedicated team handles everything. You'll spend about 30 minutes per week reviewing a KPI report and giving feedback." },
-  { q: "What if we've worked with an agency before and it didn't work?", a: "Most of our clients have been through that. The difference: most agencies are Klaviyo operators. We're retention architects. We build 26+ behavioural flows, run 20+ A/B tests monthly, and track LTV:CAC, not just open rates." },
-  { q: "How fast can you go live?", a: "Under 2 weeks. Other agencies take a month. On a $300K/month brand, every week of delay is $10,000-$15,000 in missed revenue." },
-  { q: "Are there long-term contracts?", a: "No. Monthly contracts. No lock-in. No hidden fees. If we don't deliver, you leave." },
+  {
+    q: "What results can I expect in the first 90 days?",
+    a: "We're an ROI-focused agency. We don't ask you to pay for our effort. Rather, we guarantee you the return. Get your ROI back within the first 60 days, or we work for free until you do. Simple as that.",
+  },
+  {
+    q: "How fast can you make the emails live?",
+    a: "We make your first email live in under 24 hours, and every flow live in under 10 days, faster than any agency out there. Why speed matters: if you're doing multi-six-figures a month, every day you wait is $10K+ in revenue left on the table. We don't make you wait to start making money.",
+  },
+  {
+    q: "We've been burned by an agency before. Why would this be different?",
+    a: "Most of our clients came to us after exactly that. Here's the difference: we're not just another email agency, we're an ROI-focused retention agency. We work with zero-party data and build behavioural flows most agencies don't even know exist. Either you get your ROI back, or we work for free until you do, and we'll send you $500 for wasting your time. That's how confident we are.",
+  },
+  {
+    q: "Are we locked into a long-term contract?",
+    a: "No. Month-to-month, no lock-ins, no hidden fees, no surprises. If we don't deliver, you walk. Simple as that. We keep clients by performing, not by trapping them in paperwork.",
+  },
+  {
+    q: "How much does it cost to work with you?",
+    a: "We believe any agency that quotes you a price before understanding your business is setting you up to overpay. So we do it differently. First, we get on a call and learn your situation, your goals, and where your real opportunities are. If we're confident we can help, we'll give you a custom quote built around your brand. That's how transparent and honest we are, and it's why our clients trust us from day one.",
+  },
+  {
+    q: "How is this different from just hiring someone in-house?",
+    a: "An in-house hire gives you one person doing one job. But for email marketing, you have to have at least 5 different experts. If you'll bring 5 of them in-house, you'll end up paying them more than $15k/mo. With us, you get an entire team at a fraction of that cost.",
+  },
+  {
+    q: "How much time will this take on our end?",
+    a: "Almost none. No micromanaging. No hidden cost. It's all DFY so that you can fully focus on scaling your brand to 8 & 9 figures.",
+  },
 ];
 
 export const FINAL_CHECKS = [
