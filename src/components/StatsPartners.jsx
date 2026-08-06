@@ -9,9 +9,18 @@ import {
 } from "motion/react";
 
 /* ------------------------------------------------------------------ *
- * Stat bento — a premium, enterprise-grade metrics section.
- * Bespoke display config lives here so each metric can carry its own
- * number/suffix/icon/copy and visual weight (hierarchy over uniformity).
+ * The numbers.
+ *
+ * Built as a hairline-divided quadrant rather than a bento with a hero
+ * tile. The bento gave one metric double height, which meant its content
+ * had to be spread across a span the other three never had — the source
+ * of the dead gap. Four equal cells remove the problem at the root
+ * instead of decorating around it, and reading order still leads with
+ * revenue.
+ *
+ * The rules between cells are a 1px grid gap over a tinted container,
+ * so they are perfectly even at every breakpoint with no border maths
+ * and no double-borders where cells meet.
  * ------------------------------------------------------------------ */
 
 const IconRevenue = (p) => (
@@ -52,7 +61,6 @@ const STAT_ITEMS = [
     suffix: "-Figs",
     blurb:
       "7-Figures in strictly tracked, attributable backend revenue driven for our partners.",
-    hero: true,
   },
   {
     key: "brands",
@@ -78,7 +86,7 @@ const STAT_ITEMS = [
     key: "returning",
     icon: IconRepeat,
     eyebrow: "Retention",
-    prefix: "Maximum ",
+    prefix: "Maximum",
     value: 64,
     suffix: "%",
     blurb:
@@ -86,7 +94,7 @@ const STAT_ITEMS = [
   },
 ];
 
-/* Count-up number. All tickers fire together via the section-level `start`. */
+/* Count-up. Every ticker fires together off the section-level `start`. */
 function NumberTicker({ value, start, className }) {
   const reduce = useReducedMotion();
   const mv = useMotionValue(0);
@@ -99,7 +107,7 @@ function NumberTicker({ value, start, className }) {
       return;
     }
     const controls = animate(mv, value, {
-      duration: 1.5,
+      duration: 1.6,
       ease: [0.16, 1, 0.3, 1],
     });
     const unsub = mv.on("change", (v) => setDisplay(Math.round(v)));
@@ -112,35 +120,16 @@ function NumberTicker({ value, start, className }) {
   return <span className={className}>{display}</span>;
 }
 
-function IconBadge({ Icon, className = "", size = 18 }) {
-  return (
-    <span
-      className={`grid shrink-0 place-items-center rounded-[11px] bg-[#3362FF]/[0.12] text-[#8FA9FF] ring-1 ring-inset ring-[#3362FF]/25 ${className}`}
-    >
-      <Icon width={size} height={size} />
-    </span>
-  );
-}
-
-const cardVar = {
-  hidden: { opacity: 0, y: 26, filter: "blur(6px)" },
-  show: {
-    opacity: 1,
-    y: 0,
-    filter: "blur(0px)",
-    transition: { duration: 0.6, ease: [0.22, 1, 0.36, 1] },
-  },
+const cellVar = {
+  hidden: { opacity: 0, y: 22 },
+  show: { opacity: 1, y: 0, transition: { duration: 0.6, ease: [0.22, 1, 0.36, 1] } },
 };
-const gridVar = {
-  hidden: {},
-  show: { transition: { staggerChildren: 0.1, delayChildren: 0.05 } },
-};
+const gridVar = { hidden: {}, show: { transition: { staggerChildren: 0.09 } } };
 
-/* Card shell: rotating-beam OR hairline border, grid texture, mouse spotlight. */
-function StatShell({ item, start, className = "" }) {
+function Cell({ item, start }) {
   const ref = useRef(null);
 
-  // Mouse-reactive spotlight via CSS vars — no React state, no re-renders.
+  // Spotlight via CSS vars — no state, so no re-render per mousemove.
   const onMove = (e) => {
     const el = ref.current;
     if (!el) return;
@@ -148,122 +137,67 @@ function StatShell({ item, start, className = "" }) {
     el.style.setProperty("--mx", `${e.clientX - r.left}px`);
     el.style.setProperty("--my", `${e.clientY - r.top}px`);
   };
-  const onLeave = () => {
-    const el = ref.current;
-    if (!el) return;
-    el.style.setProperty("--mx", `-300px`);
-    el.style.setProperty("--my", `-300px`);
-  };
 
   return (
     <motion.div
       ref={ref}
-      variants={cardVar}
+      variants={cellVar}
       onMouseMove={onMove}
-      onMouseLeave={onLeave}
-      style={{ "--mx": "-300px", "--my": "-300px" }}
-      className={`group relative overflow-hidden rounded-[24px] ${className}`}
+      onMouseLeave={() => ref.current?.style.setProperty("--mx", "-500px")}
+      style={{ "--mx": "-500px", "--my": "-500px" }}
+      className="group relative flex flex-col justify-between gap-8 bg-[#080C1C] p-7 transition-colors duration-500 hover:bg-[#0B1026] md:gap-10 md:p-10"
     >
-      {/* Border layer: rotating beam for the hero, hairline for the rest */}
-      {item.hero ? (
-        <div className="pointer-events-none absolute inset-0 overflow-hidden rounded-[inherit]">
-          <div
-            className="absolute left-1/2 top-1/2 aspect-square w-[150%] [animation:beam-spin_7s_linear_infinite] motion-reduce:animate-none"
-            style={{
-              background:
-                "conic-gradient(from 0deg, rgba(255,255,255,0.06) 0deg, rgba(255,255,255,0.06) 292deg, rgba(51,98,255,0.85) 330deg, #AEC4FF 345deg, rgba(255,255,255,0.06) 360deg)",
-            }}
-          />
-        </div>
-      ) : (
-        <div className="pointer-events-none absolute inset-0 rounded-[inherit] ring-1 ring-inset ring-white/[0.09]" />
-      )}
-
-      {/* Inner surface (reveals the 1px border/beam) */}
+      {/* Spotlight sits behind the copy */}
       <div
-        className="absolute inset-[1px] rounded-[23px]"
-        style={{ background: "linear-gradient(180deg, #10152E 0%, #090D20 100%)" }}
-      />
-
-      {/* Grid texture, fading in from the top-left corner */}
-      <div
-        className="pointer-events-none absolute inset-[1px] rounded-[23px]"
-        style={{
-          backgroundImage:
-            "linear-gradient(rgba(120,150,255,0.055) 1px, transparent 1px), linear-gradient(90deg, rgba(120,150,255,0.055) 1px, transparent 1px)",
-          backgroundSize: "34px 34px",
-          maskImage:
-            "radial-gradient(130% 120% at 0% 0%, #000 0%, transparent 72%)",
-          WebkitMaskImage:
-            "radial-gradient(130% 120% at 0% 0%, #000 0%, transparent 72%)",
-        }}
-      />
-
-      {/* Ambient corner glow for the hero */}
-      {item.hero && (
-        <div
-          className="pointer-events-none absolute -right-16 -top-16 h-56 w-56 rounded-full blur-[70px]"
-          style={{
-            background:
-              "radial-gradient(circle, rgba(51,98,255,0.35), transparent 70%)",
-          }}
-        />
-      )}
-
-      {/* Mouse spotlight */}
-      <div
-        className="pointer-events-none absolute inset-[1px] rounded-[23px] opacity-0 transition-opacity duration-300 group-hover:opacity-100"
+        aria-hidden
+        className="pointer-events-none absolute inset-0 opacity-0 transition-opacity duration-300 group-hover:opacity-100"
         style={{
           background:
-            "radial-gradient(300px circle at var(--mx) var(--my), rgba(51,98,255,0.18), transparent 62%)",
+            "radial-gradient(340px circle at var(--mx) var(--my), rgba(51,98,255,0.14), transparent 65%)",
         }}
       />
 
-      {/* Content */}
-      <div className="relative z-10 flex h-full flex-col justify-between gap-5 p-5 md:p-6">
-        <div className="flex items-center gap-2.5">
-          <IconBadge
-            Icon={item.icon}
-            size={item.hero ? 19 : 17}
-            className={item.hero ? "h-10 w-10" : "h-9 w-9"}
-          />
-          <span className="font-body text-[12px] font-semibold uppercase tracking-[0.16em] text-[#8FA9FF]/90">
-            {item.eyebrow}
+      {/* Eyebrow */}
+      <div className="relative z-10 flex items-center gap-2.5">
+        <span className="grid h-8 w-8 shrink-0 place-items-center rounded-[9px] bg-[#3362FF]/[0.12] text-[#8FA9FF] ring-1 ring-inset ring-[#3362FF]/25 transition-colors duration-500 group-hover:bg-[#3362FF]/20 group-hover:text-[#C3D2FF]">
+          <item.icon width={15} height={15} />
+        </span>
+        <span className="font-body text-[11.5px] font-semibold uppercase tracking-[0.18em] text-[#8FA9FF]/90">
+          {item.eyebrow}
+        </span>
+      </div>
+
+      {/* Figure + blurb */}
+      <div className="relative z-10">
+        {/* "Maximum" rides above the figure: at display size it pushed "64%"
+            onto a second line and read like a typo. */}
+        {item.prefix && (
+          <span className="font-body mb-2 block text-[11.5px] font-semibold uppercase tracking-[0.18em] text-[#E1E3E9]/70">
+            {item.prefix}
           </span>
+        )}
+
+        <div
+          className="flex flex-wrap items-end font-display text-white"
+          style={{
+            fontSize: "clamp(44px, 4.8vw, 68px)",
+            fontWeight: 600,
+            lineHeight: 0.9,
+            letterSpacing: "-0.025em",
+          }}
+        >
+          <NumberTicker value={item.value} start={start} />
+          <span className="text-[#9fb4ff]">{item.suffix}</span>
+          {item.unit && (
+            <span className="ml-2.5 text-[0.34em] font-medium text-[#E1E3E9]">
+              {item.unit}
+            </span>
+          )}
         </div>
 
-        <div>
-          <div
-            className="flex flex-wrap items-end font-display text-white"
-            style={{
-              fontSize: item.hero
-                ? "clamp(48px, 5.6vw, 84px)"
-                : "clamp(34px, 3.4vw, 46px)",
-              fontWeight: 600,
-              lineHeight: 0.9,
-              letterSpacing: "-0.02em",
-            }}
-          >
-            {item.prefix && <span>{item.prefix}</span>}
-            <NumberTicker value={item.value} start={start} />
-            <span className="text-[#9fb4ff]">{item.suffix}</span>
-            {item.unit && (
-              <span className="ml-2 text-[0.4em] font-medium text-[#E1E3E9]">
-                {item.unit}
-              </span>
-            )}
-          </div>
-
-          <p
-            className={`font-body leading-relaxed text-[#8A90A2] ${
-              item.hero
-                ? "mt-3 max-w-[360px] text-[15px]"
-                : "mt-2.5 text-[13.5px]"
-            }`}
-          >
-            {item.blurb}
-          </p>
-        </div>
+        <p className="font-body mt-4 max-w-[42ch] text-[14.5px] leading-relaxed text-[#8A90A2]">
+          {item.blurb}
+        </p>
       </div>
     </motion.div>
   );
@@ -274,7 +208,7 @@ export default function StatsPartners() {
   const headRef = useRef(null);
   const headInView = useInView(headRef, { once: true, amount: 0.3 });
   const gridRef = useRef(null);
-  const started = useInView(gridRef, { once: true, amount: 0.25 });
+  const started = useInView(gridRef, { once: true, amount: 0.2 });
 
   return (
     <section className="container-page relative py-16 md:py-24">
@@ -282,8 +216,7 @@ export default function StatsPartners() {
       <div
         className="pointer-events-none absolute left-1/2 top-10 h-[420px] w-[820px] -translate-x-1/2 rounded-full opacity-[0.22] blur-[130px]"
         style={{
-          background:
-            "radial-gradient(circle, rgba(51,98,255,0.4) 0%, transparent 70%)",
+          background: "radial-gradient(circle, rgba(51,98,255,0.4) 0%, transparent 70%)",
         }}
       />
 
@@ -315,28 +248,21 @@ export default function StatsPartners() {
           </p>
         </motion.div>
 
-        {/* Bento grid */}
-        <motion.div
-          ref={gridRef}
-          variants={gridVar}
-          initial="hidden"
-          whileInView="show"
-          viewport={{ once: true, amount: 0.2 }}
-          className="grid grid-cols-1 gap-4 sm:grid-cols-2 md:auto-rows-[minmax(168px,auto)] md:grid-cols-4 md:gap-4"
-        >
-          <StatShell
-            item={STAT_ITEMS[0]}
-            start={started}
-            className="min-h-[220px] sm:col-span-2 md:col-span-2 md:row-span-2 md:min-h-0"
-          />
-          <StatShell
-            item={STAT_ITEMS[1]}
-            start={started}
-            className="min-h-[168px] sm:col-span-2 md:col-span-2"
-          />
-          <StatShell item={STAT_ITEMS[2]} start={started} className="min-h-[168px]" />
-          <StatShell item={STAT_ITEMS[3]} start={started} className="min-h-[168px]" />
-        </motion.div>
+        {/* Quadrant. gap-px over a tinted container draws the hairlines. */}
+        <div className="overflow-hidden rounded-[24px] border border-white/[0.09] shadow-[0_30px_80px_-40px_rgba(0,0,0,0.9)]">
+          <motion.div
+            ref={gridRef}
+            variants={gridVar}
+            initial="hidden"
+            whileInView="show"
+            viewport={{ once: true, amount: 0.15 }}
+            className="grid grid-cols-1 gap-px bg-white/[0.09] sm:grid-cols-2"
+          >
+            {STAT_ITEMS.map((item) => (
+              <Cell key={item.key} item={item} start={started} />
+            ))}
+          </motion.div>
+        </div>
       </div>
     </section>
   );
