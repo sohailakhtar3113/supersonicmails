@@ -52,9 +52,13 @@ export default function Hero() {
             <motion.div initial={{ opacity: 0, y: 18 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, ease: EASE_OUT }}>
               {/* Overrides carry `!` because Tailwind resolves competing
                   utilities by stylesheet order, not class-attribute order. */}
+              {/* 48 characters have to clear ~358px of content width on a
+                  390px phone. Dropping the inherited `tracking-wide` reclaims
+                  roughly a character's worth of width on its own, which keeps
+                  the type larger than shrinking the font alone would allow. */}
               <Badge
                 dot
-                className="!px-3 !py-1 !text-[10.5px] sm:!px-3.5 sm:!py-1.5 sm:!text-[12.5px]"
+                className="!px-2.5 !py-1 !text-[9.5px] [&>span]:!tracking-normal sm:!px-3.5 sm:!py-1.5 sm:!text-[12.5px] sm:[&>span]:!tracking-wide"
               >
                 FOR ECOM BRANDS ALREADY SCALING PAST $100K/MONTH
               </Badge>

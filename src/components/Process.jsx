@@ -90,8 +90,11 @@ function Orbit({ p, reduce }) {
   const dash = useTransform(p, [0, 1], [0, -1]);
 
   return (
-    <div className="pointer-events-none absolute inset-0 grid place-items-center">
-      <div className="relative aspect-[1000/1320] w-[92vw] max-w-[1160px] sm:aspect-[1000/900] md:aspect-[1000/560]">
+    // Hidden on phones: the card fills the width there, so the ring's left and
+    // right arcs — which is exactly where the nodes sit — end up behind it. A
+    // linear StageRail replaces it below `sm`.
+    <div className="pointer-events-none absolute inset-0 hidden place-items-center sm:grid">
+      <div className="relative aspect-[1000/900] w-[92vw] max-w-[1160px] md:aspect-[1000/560]">
         <svg
           className="absolute inset-0 h-full w-full"
           viewBox="0 0 1000 560"
@@ -149,6 +152,51 @@ function Orbit({ p, reduce }) {
   );
 }
 
+/**
+ * Phone stand-in for the orbit: the same three markers on a straight track,
+ * with the fill driven by the same scroll progress. Keeps the "where am I in
+ * the sequence" signal that the ring provides on wider screens.
+ */
+function StageRail({ p, reduce }) {
+  const fill = useTransform(p, [0, 1], ["0%", "100%"]);
+  return (
+    <div className="relative flex w-full max-w-[260px] items-center justify-between sm:hidden">
+      <span aria-hidden className="absolute inset-x-0 top-1/2 h-px -translate-y-1/2 bg-white/[0.12]" />
+      <motion.span
+        aria-hidden
+        style={{ width: reduce ? "100%" : fill }}
+        className="absolute left-0 top-1/2 h-px -translate-y-1/2 bg-gradient-to-r from-[#3362FF] to-[#AEC4FF] shadow-[0_0_8px_rgba(51,98,255,0.9)]"
+      />
+      {STAGES.map((s, i) => (
+        <RailNode key={s.n} p={p} at={NODES[i].at} label={s.n} reduce={reduce} />
+      ))}
+    </div>
+  );
+}
+
+function RailNode({ p, at, label, reduce }) {
+  const lit = useTransform(p, [at - 0.03, at + 0.05], [0, 1]);
+  const body = useTransform(lit, (v) => 0.45 + v * 0.55);
+  return (
+    <motion.span
+      style={{ opacity: reduce ? 1 : body }}
+      className="relative grid h-8 w-8 place-items-center rounded-full border border-white/[0.14] bg-[#080C1E]"
+    >
+      <motion.span
+        aria-hidden
+        style={{ opacity: reduce ? 1 : lit }}
+        className="absolute inset-0 rounded-full ring-2 ring-inset ring-[#3362FF]/70 shadow-[0_0_18px_rgba(51,98,255,0.6)]"
+      />
+      <span
+        className="relative text-[11px] font-semibold text-white"
+        style={{ fontFamily: "'Clash Display', Georgia, serif" }}
+      >
+        {label}
+      </span>
+    </motion.span>
+  );
+}
+
 function StageCard({ stage, i, p, reduce }) {
   // Beat boundaries for this card, plus the landing points of the two cards
   // that follow it — those drive how far back it recedes in the deck.
@@ -160,7 +208,10 @@ function StageCard({ stage, i, p, reduce }) {
   const x = useTransform(p, [a, b], ["100vw", "0vw"]);
   const rotate = useTransform(p, [a, b], [9, 0]);
   const scale = useTransform(p, [a, b, c, d], [0.84, 1, 0.93, 0.86]);
-  const y = useTransform(p, [b, c, d], [0, -24, -48]);
+  // Lift is capped at 28px because transforms do not reflow: a receded card
+  // rides up over whatever sits above the deck. The column gap below is set
+  // to exceed this, so the stack can never reach the heading.
+  const y = useTransform(p, [b, c, d], [0, -14, -28]);
   // Opacity only covers the arrival. Once landed a card stays fully opaque
   // forever: fading a receded card makes it translucent, and the card *behind*
   // it reads straight through — the exact mush this deck has to avoid.
@@ -220,23 +271,25 @@ function StageCard({ stage, i, p, reduce }) {
 
         {/* Centred, because every card is sized to the tallest stage — left
             top-aligned, the four-bullet stages trail dead space. */}
-        <div className="relative flex h-full flex-col justify-center p-6 md:p-8">
-          <span className="inline-flex items-center gap-2 rounded-full border border-white/[0.10] bg-white/[0.04] px-3 py-1.5 text-[11px] font-semibold uppercase tracking-[0.16em] text-[#8FA9FF] md:text-[11.5px]">
+        {/* Every size below reads from a --var set once on the stage, so the
+            whole card compresses together as the viewport gets shorter. */}
+        <div className="relative flex h-full flex-col justify-center p-[var(--pad)]">
+          <span className="inline-flex w-fit items-center gap-2 rounded-full border border-white/[0.10] bg-white/[0.04] px-3 py-1 text-[10.5px] font-semibold uppercase tracking-[0.16em] text-[#8FA9FF] md:text-[11.5px]">
             <span className="h-1.5 w-1.5 rounded-full bg-[#3362FF] shadow-[0_0_7px_#3362FF]" />
             Stage {stage.n}
           </span>
 
           <h3
-            className="mt-4 text-[22px] font-semibold leading-[1.15] text-white md:mt-5 md:text-[28px]"
+            className="mt-[var(--titlemt)] text-[length:var(--title)] font-semibold leading-[1.15] text-white"
             style={{ fontFamily: "'Clash Display', Georgia, serif" }}
           >
             {stage.title}
           </h3>
-          <p className="font-rethink mt-2 text-[14px] leading-[1.55] text-[#9AA2B6] md:text-[16px]">
+          <p className="font-rethink mt-1.5 text-[length:var(--lead)] leading-[1.5] text-[#9AA2B6]">
             {stage.lead}
           </p>
 
-          <ul className="mt-4 flex flex-col gap-2.5 md:mt-6 md:gap-3">
+          <ul className="mt-[var(--listmt)] flex flex-col gap-[var(--rowgap)]">
             {stage.items.map((it) => {
               const [lead, ...rest] = it.split(":");
               const detail = rest.join(":").trim();
@@ -254,7 +307,7 @@ function StageCard({ stage, i, p, reduce }) {
                   >
                     <polyline points="9 6 15 12 9 18" />
                   </svg>
-                  <span className="font-rethink text-[13px] leading-[1.5] text-[#9AA2B6] md:text-[15.5px]">
+                  <span className="font-rethink text-[length:var(--item)] leading-[1.45] text-[#9AA2B6]">
                     {detail ? (
                       <>
                         <span className="font-display font-semibold text-white">
@@ -294,23 +347,49 @@ export default function Process() {
   return (
     <section className="relative">
       <div ref={runwayRef} className="relative h-[360vh]">
-        <div className="sticky top-0 flex h-[100svh] flex-col overflow-hidden">
+        {/*
+          Everything in this stage is sized off the *viewport height*, not a
+          breakpoint. A pinned section has a hard ceiling — whatever does not
+          fit in 100svh is simply cut off — and laptop viewports are short:
+          1440x800 and 1280x720 are far more common than 1440x900. With fixed
+          type the card ran 476px tall at every height and was clipped by 40px
+          and 80px respectively.
+
+          `svh` (not `vh`) because mobile browser chrome makes `vh` overshoot
+          and would reintroduce the clipping on exactly the phones this needs
+          to work on.
+        */}
+        <div
+          className="sticky top-0 flex h-[100svh] flex-col overflow-hidden"
+          style={{
+            "--pad": "clamp(14px, 2.4svh, 30px)",
+            "--title": "clamp(17px, 2.9svh, 28px)",
+            "--titlemt": "clamp(8px, 1.6svh, 20px)",
+            "--lead": "clamp(12.5px, 1.8svh, 16px)",
+            "--item": "clamp(11.5px, 1.7svh, 15.5px)",
+            "--rowgap": "clamp(5px, 1.05svh, 12px)",
+            "--listmt": "clamp(9px, 1.9svh, 24px)",
+          }}
+        >
           <Orbit p={p} reduce={reduce} />
 
-          {/* Generous gap: receded cards lift upward, and a tight gap lets
-              them collide with the heading. */}
-          <div className="relative z-10 flex h-full flex-col items-center justify-center gap-9 px-5 pb-8 pt-24 md:gap-14 md:pt-28">
-            <div className="shrink-0 mb-40 text-center">
-              <Badge dot className="mb-4 md:mb-5">
+          {/* pt clears the fixed navbar, which ends at 76px on phones and
+              112px from md up — hence the hard floors rather than pure svh. */}
+          {/* gap floor of 32px clears the 28px recede lift at every height. */}
+          <div className="relative z-10 flex h-full flex-col items-center justify-center gap-[clamp(32px,4svh,52px)] px-5 pb-[clamp(14px,2svh,32px)] pt-[clamp(88px,11svh,110px)] md:pt-[clamp(126px,15svh,152px)]">
+            <div className="shrink-0 text-center">
+              <Badge dot className="mb-3 !px-3 !py-1 !text-[10.5px] sm:!text-[12.5px] md:mb-5">
                 OUR FRAMEWORK
               </Badge>
               <h2
-                className="text-[26px] font-semibold leading-[1.12] text-white md:text-[42px]"
+                className="text-[length:clamp(21px,3.3svh,42px)] font-semibold leading-[1.12] text-white"
                 style={{ fontFamily: "'Clash Display', Georgia, serif" }}
               >
                 Our 8-Fig Scaling Framework
               </h2>
             </div>
+
+            <StageRail p={p} reduce={reduce} />
 
             {/* All cards share one grid cell, so they stack as a deck. Default
                 `stretch` sizes every card to the tallest (stage 02, six

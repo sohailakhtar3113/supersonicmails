@@ -45,7 +45,10 @@ export default function Navbar() {
       transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
       className="fixed inset-x-0 top-3 z-50 px-4 sm:px-6"
     >
-      <nav className="container-page relative flex items-center justify-between rounded-full px-4 py-2.5 sm:px-6">
+      {/* Explicit width + padding rather than `container-page`: that class sets
+          padding-inline:24px as unlayered CSS, which silently beat the `px-4`
+          utility here and cost 20px of the row on a phone. */}
+      <nav className="relative mx-auto flex w-full max-w-[1240px] items-center justify-between rounded-full px-3.5 py-2.5 sm:px-6">
         {/*
           The glass is a separate layer that is *unmounted* at the top of the
           page, not merely transparent. An opacity-0 element still carries its

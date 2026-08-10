@@ -38,7 +38,9 @@ export default function LogoBrand({
     size === "sm"
       ? "h-10 sm:h-15"
       : hideTextOnMobile
-        ? "h-12 sm:h-40 md:h-20"
+        // h-11 on phones: at h-12 the lockup was 142px wide and left only 6px
+        // between it and the CTA on a 390px screen.
+        ? "h-11 sm:h-40 md:h-20"
         // Footer: 44/52/60px -> roughly 131/154/178px wide. Kept a step under
         // the navbar lockup so the footer reads as a sign-off, not a masthead.
         : "h-11 sm:h-13 md:h-15";
