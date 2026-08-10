@@ -144,12 +144,12 @@ export default function DesignShowcase() {
           Our design work
         </p>
         <h2
-          className="mx-auto mt-3 max-w-[880px] text-[30px] font-semibold leading-[1.15] text-white md:text-[44px]"
+          className="mx-auto mt-3 max-w-[880px] text-[22px] font-semibold leading-[1.25] text-white sm:text-[32px] md:text-[44px]"
           style={{ fontFamily: "'Clash Display', Georgia, serif" }}
         >
           Designs That&rsquo;ve Been Printing An Extra{" "}
-          <span className="serif-i text-[#9fb4ff]">7 Figs/Year</span> For Our
-          Partner Brands
+          <span className="serif-i text-[#9fb4ff]">7 Figs/Year</span>
+          <span className="hidden sm:inline"> For Our Partner Brands</span>
         </h2>
       </Reveal>
 

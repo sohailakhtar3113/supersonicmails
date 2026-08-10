@@ -99,7 +99,7 @@ export default function CaseStudies() {
       <Reveal className="relative z-10 mb-12 flex flex-col items-center text-center md:mb-16">
         <Badge className="mb-6">Case Studies</Badge>
         <h2
-          className="text-[30px] font-semibold leading-[1.12] text-white md:text-[46px]"
+          className="text-[22px] font-semibold leading-[1.2] text-white sm:text-[32px] md:text-[46px]"
           style={{ fontFamily: "'Clash Display', Georgia, serif" }}
         >
           The Results Speak For Themselves

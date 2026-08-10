@@ -18,9 +18,11 @@ export default function Footer() {
       <Reveal className="container-page relative z-10">
         <div className="grid grid-cols-1 gap-12 md:grid-cols-2">
           <div>
-            <LogoBrand />
-            <div className="mt-10 flex flex-col items-start gap-6">
-              <ApplyButton />
+            <div className="flex items-center justify-between gap-4 sm:justify-start sm:gap-6">
+              <LogoBrand />
+              <ApplyButton className="!py-2 sm:!py-2.5 md:!py-3 !px-3.5 sm:!px-4 md:!px-5 !text-[12.5px] sm:!text-[14px] md:!text-[16px]" />
+            </div>
+            <div className="mt-6">
               <TrustRow />
             </div>
           </div>

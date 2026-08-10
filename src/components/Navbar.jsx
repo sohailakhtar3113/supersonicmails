@@ -90,7 +90,7 @@ export default function Navbar() {
 
         {/* Right CTA Button */}
         <div className="relative z-10">
-          <ApplyButton className="!py-2 sm:!py-3 !px-3.5 sm:!px-5 !text-[13px] sm:!text-[16px]" />
+          <ApplyButton className="!py-2 sm:!py-2.5 md:!py-3 !px-3.5 sm:!px-4 md:!px-5 !text-[12.5px] sm:!text-[14px] md:!text-[16px]" />
         </div>
       </nav>
     </motion.header>

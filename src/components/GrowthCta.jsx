@@ -12,7 +12,7 @@ export default function GrowthCta() {
         <Stagger className="mx-auto flex max-w-[820px] flex-col items-center" amount={0.3}>
           <Reveal variants={revealSm}><Badge>If you&apos;re doing $200K+ per month</Badge></Reveal>
           <Reveal variants={revealSm}>
-            <h2 className="font-display mt-7 text-[30px] font-medium leading-[1.2] text-white md:text-[40px] md:leading-[48px]" style={{ letterSpacing: "-0.4px" }}>
+            <h2 className="font-display mt-7 text-[22px] font-medium leading-[1.25] text-white sm:text-[30px] md:text-[40px] md:leading-[48px]" style={{ letterSpacing: "-0.4px" }}>
               Your Biggest Growth Lever Isn&apos;t More Ad Spend.
             </h2>
           </Reveal>

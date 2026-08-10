@@ -38,7 +38,7 @@ export default function Testimonials() {
       <img src={ASSET.headingGlow} alt="" aria-hidden className="pointer-events-none absolute left-1/2 top-4 w-[717px] max-w-none -translate-x-1/2 opacity-70" />
       <Reveal className="relative z-10 mb-12 flex flex-col items-center text-center">
         <Badge className="mb-6">Proof</Badge>
-        <h2 className="font-display text-[32px] leading-[1.15] text-white md:text-[42px] md:leading-[50px]" style={{ letterSpacing: "-0.42px" }}>
+        <h2 className="font-display text-[22px] leading-[1.25] text-white sm:text-[30px] md:text-[42px] md:leading-[50px]" style={{ letterSpacing: "-0.42px" }}>
           Hear From The Brands <br /><span className="serif-i">We&apos;ve Scaled</span>
         </h2>
       </Reveal>

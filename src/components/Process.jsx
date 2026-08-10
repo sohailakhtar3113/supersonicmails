@@ -178,9 +178,9 @@ function StageCard({ stage, i, p, reduce }) {
         reduce
           ? { opacity: fade }
           : // Scale from the top edge, so the -y offset is the only thing
-            // moving the card's top. With centre-origin scaling the two fight
-            // each other and the peek collapses.
-            { x, y, rotate, scale, opacity, transformOrigin: "top center" }
+          // moving the card's top. With centre-origin scaling the two fight
+          // each other and the peek collapses.
+          { x, y, rotate, scale, opacity, transformOrigin: "top center" }
       }
       className="col-start-1 row-start-1 w-full"
     >
@@ -300,7 +300,7 @@ export default function Process() {
           {/* Generous gap: receded cards lift upward, and a tight gap lets
               them collide with the heading. */}
           <div className="relative z-10 flex h-full flex-col items-center justify-center gap-9 px-5 pb-8 pt-24 md:gap-14 md:pt-28">
-            <div className="shrink-0 text-center">
+            <div className="shrink-0 mb-40 text-center">
               <Badge dot className="mb-4 md:mb-5">
                 OUR FRAMEWORK
               </Badge>

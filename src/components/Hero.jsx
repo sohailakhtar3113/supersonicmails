@@ -68,7 +68,7 @@ export default function Hero() {
               // exceeds its 1.08 line-height — the glyphs spill *past* the box
               // rather than sitting inside padding. Values measured, not
               // derived: offTop -0.044em, offBot -0.023em.
-              className="font-hero -mt-1.5 md:-mt-2.5 mb-[0.023em] text-white w-full text-[length:clamp(30px,8.4vw,64px)] lg:text-[length:clamp(34px,4.8vw,68px)]"
+              className="font-hero -mt-1.5 md:-mt-2.5 mb-[0.023em] text-white w-full text-[length:clamp(22px,6.4vw,64px)] lg:text-[length:clamp(34px,4.8vw,68px)]"
               style={{ lineHeight: 1.01, letterSpacing: "-0.01em" }}
             >
               <span className="block whitespace-nowrap">
@@ -105,7 +105,7 @@ export default function Hero() {
               // Measured half-leading for DM Sans at 1.7, and it is asymmetric
               // (0.177em above vs 0.229em below) because the font's ascent and
               // descent are not centred in the line box.
-              className="font-body -mt-3 md:-mt-5 -mb-[0.229em] max-w-[540px] text-[17px] font-medium leading-[1.7] text-[#A7ADBE]"
+              className="font-body -mt-3 md:-mt-5 -mb-[0.229em] max-w-[580px] text-[17px] font-medium leading-[1.7] text-[#A7ADBE]"
             >
               Boost <span className="font-semibold text-white">LTV</span>, reduce{" "}
               <span className="font-semibold text-white">churn</span>, and make an additional{" "}

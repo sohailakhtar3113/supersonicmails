@@ -235,8 +235,8 @@ export default function StatsPartners() {
           <h2
             className="font-display mt-3 text-white"
             style={{
-              fontSize: "clamp(30px, 4vw, 46px)",
-              lineHeight: 1.1,
+              fontSize: "clamp(22px, 5vw, 46px)",
+              lineHeight: 1.15,
               letterSpacing: "-0.02em",
             }}
           >

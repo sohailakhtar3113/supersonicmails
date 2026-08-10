@@ -113,7 +113,7 @@ export default function ShortsShowcase() {
             Real brand owners
           </p>
           <h2
-            className="mt-3 font-serif text-3xl font-semibold leading-tight text-white sm:text-4xl md:text-[44px]"
+            className="mt-3 font-serif text-[22px] font-semibold leading-tight text-white sm:text-3xl md:text-[44px]"
             style={{ fontFamily: "'Clash Display', Georgia, serif" }}
           >
             Hear From Our Fastest Scaling Brand Owners

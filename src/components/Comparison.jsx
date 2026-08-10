@@ -119,7 +119,7 @@ export default function Comparison() {
           Comparison
         </p>
         <h2
-          className="mt-3 text-[30px] font-semibold leading-[1.15] text-white md:text-[44px]"
+          className="mt-3 text-[22px] font-semibold leading-[1.25] text-white sm:text-[32px] md:text-[44px]"
           style={{ fontFamily: "'Clash Display', Georgia, serif" }}
         >
           Choosing Supersonic Mails Over Others

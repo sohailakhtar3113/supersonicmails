@@ -43,7 +43,7 @@ export default function Reviews() {
       <img src={ASSET.beamR} alt="" aria-hidden className="pointer-events-none absolute right-0 top-8 w-[520px] max-w-none opacity-80" />
 
       <Reveal className="container-page relative z-10 mb-14 text-center">
-        <h2 className="font-display text-[36px] leading-[1.1] text-white md:text-[50px] md:leading-[60px]" style={{ letterSpacing: "-0.5px" }}>
+        <h2 className="font-display text-[24px] leading-[1.2] text-white sm:text-[34px] md:text-[50px] md:leading-[60px]" style={{ letterSpacing: "-0.5px" }}>
           What Brands Are <span className="serif-i">Saying</span>
         </h2>
         <p className="font-body mt-3 text-[18px] font-medium text-[#A7ADBE]">Rated 4.9/5 on Trustpilot</p>

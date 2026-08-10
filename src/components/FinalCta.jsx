@@ -16,7 +16,7 @@ export default function FinalCta() {
 
         <Stagger className="relative z-10 mx-auto flex max-w-[760px] flex-col items-center" amount={0.3}>
           <Reveal variants={revealSm}>
-            <h2 className="font-display text-[30px] font-medium leading-[1.2] text-white md:text-[42px] md:leading-[50px]" style={{ letterSpacing: "-0.42px" }}>
+            <h2 className="font-display text-[22px] font-medium leading-[1.25] text-white sm:text-[30px] md:text-[42px] md:leading-[50px]" style={{ letterSpacing: "-0.42px" }}>
               Your Brand Is Probably Sitting On <span className="serif-i">25–40% More Revenue</span> Right Now
             </h2>
           </Reveal>
