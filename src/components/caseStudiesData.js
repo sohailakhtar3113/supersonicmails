@@ -1,0 +1,268 @@
+/**
+ * Single source of truth for case studies.
+ *
+ * Consumed by the homepage grid (client) and by the /case-studies/[slug]
+ * detail pages (server), so it must stay free of "use client" and of any
+ * component imports.
+ *
+ * `body` is a small block list rather than raw HTML so the detail page can
+ * style each kind consistently and nothing untrusted is ever injected.
+ *   { h2 }      section heading
+ *   { p }       paragraph
+ *   { lead }    opening paragraph, set larger
+ *   { arrows }  the "→" bullet list
+ *   { bullets } plain bullet list
+ *   { callout } emphasised result line
+ *   { img }     { src, alt, caption }
+ *   { gallery } { title, images: [{ src, alt }] }
+ *   { profile } { name, text, photo, links: [{ label, href }] }
+ *   { note }    muted aside
+ *   { cta }     { blurb, label, href }
+ */
+const CAL = "https://calendly.com/sameer-badretention/30min";
+export const CS_DIR = "/casestudies";
+
+export const CASE_STUDIES = [
+  {
+    slug: "quotrell-800k-in-162-days",
+    img: `${CS_DIR}/quotrell-800k.jpg`,
+    alt: "Klaviyo conversion summary showing €806,533.18 in attributed conversions, split €441,680.18 campaigns and €364,853.00 flows",
+    // Card
+    title: "How Quotrell Generated an extra €800k in 162 Days From Email Alone",
+    desc: "A 100X return most brands would call impossible. We call it a random quarter results. Here's the ROI-first system behind the number.",
+    // Detail page
+    metric: "€806,533",
+    metricLabel: "Attributed in 162 days",
+    published: true,
+    body: [
+      {
+        lead: "Quotrell came to us with something most brands would kill for and almost nobody uses properly: an 80k list of genuinely loyal buyers.",
+      },
+      { p: "And they were blasting the whole thing. Every email, to every person, every time." },
+      {
+        p: "That's the fastest way to burn a good list. Your engaged buyers get lumped in with people who haven't opened since 2023, inbox providers notice, and slowly your emails stop getting seen by the ones who actually want them.",
+      },
+      { p: "So we rebuilt it:" },
+      {
+        arrows: [
+          "Hyper targeted segments instead of full list blasts. Open rates went up immediately.",
+          "9-10 flows live, 50+ emails deep. Running 24/7 whether anyone's at the laptop or not.",
+          "6 step launch sequences for product drops.",
+          "3-4 campaigns a week, every week.",
+        ],
+      },
+      {
+        p: "The part I didn't expect: they kept printing straight through the post Black Friday window, when most brands go quiet and wait for January.",
+      },
+      { p: "€806,533 in 162 days. Around $1M. Not one euro of ad spend attached to it." },
+      {
+        cta: {
+          label: "Get a FREE Audit",
+          href: CAL,
+          blurb: "Want us to install the ROI-First systems in your brand?",
+        },
+      },
+      { note: "(Limited to 3 brands only before Q4 starts)" },
+    ],
+  },
+  {
+    slug: "314k-in-42-days",
+    img: `${CS_DIR}/brand-314k.jpg`,
+    alt: "Business performance summary showing €998,511.92 total revenue and €314,060.12 attributed revenue, 31.45% of total",
+    title: "How We Generated €314,060.12 for One Brand in Just 42 Days",
+    desc: "No new traffic. No bigger ad budget. Just a retention system most agencies don't know how to build.",
+    metric: "€314,060",
+    metricLabel: "Attributed in 42 days",
+    published: true,
+    body: [
+      { h2: "Why you should listen to me?" },
+      {
+        profile: {
+          photo: `${CS_DIR}/case2/bio.jpg`,
+          name: "Sameer",
+          text: "Hey, I'm Sameer. My Clients call me Sam haha. I'm the founder and CEO of Bad Retention. We're building Nepal's first premium Retention Marketing agency for 8-9 figure Ecom stores in the beauty, health, supplement and fashion niche. My agency has generated over $800k in attributed email revenue in the past 90 days for our partner brands.",
+          links: [
+            { label: "Instagram", href: "https://www.instagram.com/_sameerakhtar_22/" },
+            { label: "Twitter", href: "https://x.com/EcomSameer" },
+            { label: "LinkedIn", href: "https://www.linkedin.com/in/sameer-akhtar-388259300/" },
+          ],
+        },
+      },
+
+      { h2: "Case background" },
+      {
+        p: "This is a 8 figure brand. They have over 100k email list, they were looking for someone who can get the most out of that list and we eventually met them at the right time.",
+      },
+      {
+        p: "Tbh they were doing 100K EVERY DAY in Black friday. Their Top of the funnel was dialed in. They were doing decent sending emails internally but they knew they can do alot better, And we came in.",
+      },
+      {
+        p: "Generally the sales starts to get low post black friday. They were also blasting email to the whole list which is 100k people every time they hit send which was a bad practice.",
+      },
+      {
+        p: "It was getting hard for them to perform good post black friday. Their design was generic and bad deliverability. And WE CAME IN",
+      },
+      {
+        img: {
+          src: `${CS_DIR}/case2/summary.jpg`,
+          alt: "Business performance summary: €998,511.92 total revenue, €314,060.12 attributed (31.45%), campaigns €173,108.60 and flows €140,951.52",
+          caption: "Dec 18, 2025 to Jan 30, 2026",
+        },
+      },
+
+      { h2: "Here's what we did!!!" },
+
+      { h2: "1. Deliverability" },
+      {
+        p: "Focuses on deliverability. After the bump of black friday emails, emails generally get ignored. So we built a segment that excludes all the people:",
+      },
+      {
+        bullets: [
+          "who have never opened our emails",
+          "All emails which have bounced",
+          "Never engaged with our store in a long time",
+        ],
+      },
+      { p: "Highest open rates and the second highest revenue per campaign from this email" },
+      { callout: "Took the open rates from 40% to 65%. More opens = more revenue." },
+      {
+        img: {
+          src: `${CS_DIR}/case2/deliverability.jpg`,
+          alt: "Klaviyo campaign table showing open rates between 47% and 65% with revenue per campaign",
+        },
+      },
+
+      { h2: "2. Campaign performance" },
+      {
+        p: "Campaigns were sent very strategically. It includes promo email such as upto 50% off on best sellers. We were using bunch of different angles. Also New drops targeting various angles that their audience were reasonating with the message. Targeted and relevant messge always prints.",
+      },
+      {
+        p: "Highest revenue from a single email is €20k and it's from New year. A great way to start the New year. Umahhhhhh",
+      },
+      {
+        img: {
+          src: `${CS_DIR}/case2/campaign-1.jpg`,
+          alt: "Klaviyo campaign row for Jan 1, 2026 showing 54.90% open rate and €20,087.85 revenue",
+        },
+      },
+      { p: "Typical campaign performances" },
+      {
+        img: {
+          src: `${CS_DIR}/case2/campaign-2.jpg`,
+          alt: "Klaviyo campaign performance rows showing open rates and revenue per send",
+        },
+      },
+
+      { h2: "3. Flows performance" },
+      {
+        callout:
+          "Adding €30K every single month on autopilot from flows which they've completely been missing previously. I bet these €30K would be an extra 100K in Black Friday.",
+      },
+      { p: "Overall flows performance" },
+      {
+        img: {
+          src: `${CS_DIR}/case2/flows.jpg`,
+          alt: "Klaviyo top performing flows: Welcome Series €83,112.75, Abandoned Cart €19,278.75, Abandoned Checkout €9,793.31 and more, all live",
+        },
+      },
+      { p: "I love greens, I bet you love it too" },
+
+
+      {
+        gallery: {
+          title: "Some more results",
+          images: [
+            { src: `${CS_DIR}/case2/result-1.jpg`, alt: "Business performance summary, Jun 25 to Jul 25 2025: 23,042.61 total revenue with 5,182.04 attributed, up 49 percent" },
+            { src: `${CS_DIR}/case2/result-2.jpg`, alt: "Business performance summary, Jun 20 to Jul 20 2025: 61,737.34 total revenue with 16,676.51 attributed, 27.01 percent of total" },
+            { src: `${CS_DIR}/case2/result-3.jpg`, alt: "Business performance summary, March 2026: 413,053.21 total revenue with 168,943.64 attributed, 40.90 percent of total" },
+            { src: `${CS_DIR}/case2/result-4.png`, alt: "Conversion rate over time before and after: 0.48 percent rising to 3.2 percent, a 132 percent increase" },
+            { src: `${CS_DIR}/case2/result-5.jpg`, alt: "Signup form stats: 13.63 percent submit rate rated Excellent, 188 submits from 1.4K form views" },
+            { src: `${CS_DIR}/case2/result-6.png`, alt: "Business performance summary, Jun 24 to Aug 14 2025: 86,272.26 total revenue with 21,395.53 attributed, up 2278 percent" },
+          ],
+        },
+      },
+    ],
+  },
+  {
+    slug: "marroomi-out-of-spam",
+    img: `${CS_DIR}/marroomi-deliverability.jpg`,
+    alt: "Domain reputation chart climbing from low to high across October 2025",
+    title:
+      "How We Took This Brand's Email Out Of Spam And Into The Inbox In Less Than 30 Days",
+    desc: "Their emails weren't just underperforming. They were invisible. Here's how we fixed deliverability first, for higher open rates and higher revenue.",
+    metric: "Low to High",
+    metricLabel: "Domain reputation in under 30 days",
+    published: true,
+    body: [
+      {
+        note: "Note: Before we start, you should know that taking a brand's email out of spam is the hardest thing to do. It's not easy. It requires a lot of time and a lot of effort. We literally took this brand's email out of spam in less than 30 days (You can see the Google postmaster report here)",
+      },
+      {
+        img: {
+          src: `${CS_DIR}/case3/postmaster.jpg`,
+          alt: "Google Postmaster Tools domain reputation climbing from Low to High between 4 and 31 October 2025",
+          caption: "Google Postmaster Tools, last 30 days",
+        },
+      },
+
+      { h2: "Case background" },
+      {
+        p: "We met with this brand in late November. But we actually started working with them in early October. If you see the timeline we started working on spam issues from 4th october. It's 31 october, the day we got out of spam and we saw 78% open rate.",
+      },
+
+      { h2: "Here's the exact thing we did from start to finish" },
+      {
+        arrows: [
+          "DNS records were already setup, so no issues there",
+          "We tested where our emails are landing with the help of Glockapps (hell lotta workkkk)",
+          "we noticed a 80% of this brand emails were landing into spam, we also noticed a spike in spam complaint rate",
+          "The next we do is turned off all the non essentials flows, we keep welcome, abandoned carts, checkouts, thankyou email",
+          "Made the first welcome email fully text based",
+          "We made the following segment (if someone can or cannot receive email marketing, can receive email because person subscribed) and started by sending to 10 days engaged segment) FREE MONEY COZ NO ADS SPENDS, NOTHING HAHA",
+          "Before sending the campaign we also analysed which ISP are getting low open rates",
+          "we noticed yahoo, some gmails and aol were causing all the issues.",
+          "The next step we did was we remove the yahoos and aol from the 10 days engaged segment and made the segment more tighter for yahoo and aol (separately)",
+          "10 days engaged for gmail and 7 days engaged for yahoo and aol",
+          "Here's the imp part: we started sending plain text emails (pure value, educational) without expecting rev",
+          "we started sending 2 campaigns a week fully plain text",
+          "When we started seeing 40%+ open rate, we moved the 15 days engaged for gmail and 8 days for yahoo and aol",
+          "we again saw 45%+ open rate, we moved 30 days for gmail and 15 for yahoo and aol.",
+          "Now even with the graphic emails campaigns are getting around 50% + open rate, placed order has been increased.",
+        ],
+      },
+      {
+        callout:
+          "Welcome email open rates went from 33% to 59% so does the placed order rate even with the graphic emails.",
+      },
+
+      {
+        gallery: {
+          title: "Some more results",
+          images: [
+            { src: `${CS_DIR}/case3/result-1.jpg`, alt: "Business performance summary, Jun 25 to Jul 25 2025: 23,042.61 total revenue with 5,182.04 attributed, up 49 percent" },
+            { src: `${CS_DIR}/case3/result-2.jpg`, alt: "Business performance summary, Jun 20 to Jul 20 2025: 61,737.34 total revenue with 16,676.51 attributed, 27.01 percent of total" },
+            { src: `${CS_DIR}/case3/result-3.jpg`, alt: "Business performance summary, March 2026: 413,053.21 total revenue with 168,943.64 attributed, 40.90 percent of total" },
+            { src: `${CS_DIR}/case3/result-4.png`, alt: "Conversion rate over time before and after: 0.48 percent rising to 3.2 percent, a 132 percent increase" },
+            { src: `${CS_DIR}/case3/result-5.jpg`, alt: "Signup form stats: 13.63 percent submit rate rated Excellent, 188 submits from 1.4K form views" },
+            { src: `${CS_DIR}/case3/result-6.png`, alt: "Business performance summary, Jun 24 to Aug 14 2025: 86,272.26 total revenue with 21,395.53 attributed, up 2278 percent" },
+          ],
+        },
+      },
+    ],
+  },
+  {
+    slug: "marroomi-50-percent-retention",
+    img: `${CS_DIR}/marroomi-retention.jpg`,
+    alt: "Returning customer rate chart averaging 50.76% between March 25 and April 24, 2026",
+    title: "How We Took Marroomi.com's Returning Customer Rate To 50%",
+    desc: "Then turned one-time buyers into repeat customers, twice as often.",
+    metric: "50.76%",
+    metricLabel: "Returning customer rate",
+    published: false,
+    body: [{ p: "The full breakdown of this build is being written up and will be published here shortly." }],
+  },
+];
+
+export function getCaseStudy(slug) {
+  return CASE_STUDIES.find((c) => c.slug === slug);
+}

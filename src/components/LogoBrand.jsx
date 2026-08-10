@@ -1,47 +1,60 @@
 "use client";
-import React from "react";
-import { ASSET } from "./data";
+import Image from "next/image";
 
-export default function LogoBrand({ className = "", size = "normal", hideTextOnMobile = false }) {
-  const isSm = size === "sm";
+/**
+ * Brand lockup.
+ *
+ * Previously this was composed in markup — an icon image plus the wordmark and
+ * tagline set in CSS — which meant letter-spacing, the divider rule and the
+ * icon's own tint all had to be re-tuned at every breakpoint to stay aligned.
+ * It is now the single supplied artwork, so the lockup is pixel-identical to
+ * the design at every size.
+ *
+ * The PNG is white-on-transparent, so it is rendered with no filter or tint of
+ * any kind — whatever sits behind it shows through cleanly.
+ *
+ * `sizes` is pinned to the real rendered widths (~110-170px). Without it Next
+ * assumes full viewport width and ships a needlessly large candidate for a
+ * logo that is never wider than a business card.
+ */
+const SRC = "/designs/header.png";
+const NATURAL_W = 1703;
+const NATURAL_H = 574;
+
+export default function LogoBrand({
+  className = "",
+  size = "normal",
+  // Kept for the Navbar call site. The wordmark is baked into the artwork now,
+  // so rather than hiding text this simply renders the lockup a step smaller
+  // where horizontal room is tightest.
+  hideTextOnMobile = false,
+  preload = false,
+}) {
+  // The artwork is a ~3:1 lockup containing the icon, wordmark AND tagline, so
+  // it needs far more height than the old bare icon did: the wordmark is only
+  // about a quarter of the image's height, and the tagline less again. Sized
+  // off the smallest legible tagline rather than off the icon.
+  const height =
+    size === "sm"
+      ? "h-10 sm:h-15"
+      : hideTextOnMobile
+        ? "h-12 sm:h-40 md:h-20"
+        // Footer: 44/52/60px -> roughly 131/154/178px wide. Kept a step under
+        // the navbar lockup so the footer reads as a sign-off, not a masthead.
+        : "h-11 sm:h-13 md:h-15";
 
   return (
-    <div className={`flex items-center  shrink-0 select-none ${className}`}>
-      {/* Rocket Icon */}
-      <img
-        src={ASSET.logo}
-        alt="Supersonic Mails"
-        className={isSm ? "h-9 sm:h-10 w-auto object-contain shrink-0" : "h-[42px] sm:h-[58px] md:h-[64px] w-auto object-contain shrink-0"}
+    <div className={`flex shrink-0 select-none items-center ${className}`}>
+      <Image
+        src={SRC}
+        alt="Supersonic Mails — previously Bad Retention"
+        width={NATURAL_W}
+        height={NATURAL_H}
+        preload={preload}
+        sizes="(max-width: 640px) 180px, 260px"
+        draggable={false}
+        className={`${height} w-auto object-contain`}
       />
-
-      {/* Text Stack: SUPERSONIC on top, Mails ---- Previously Bad Retention on bottom */}
-      <div
-        className={`${
-          hideTextOnMobile ? "hidden min-[480px]:flex" : "flex"
-        } flex-col text-left leading-none justify-center`}
-      >
-        <span
-          className={`font-black text-white uppercase font-sans tracking-tight ${isSm ? "text-[16px] sm:text-[18px]" : "text-[17px] sm:text-[26px] md:text-[28px]"
-            }`}
-        >
-          S U P E R S O N I C
-        </span>
-        <div className="flex items-center w-full mt-1 sm:mt-1.5">
-          <span
-            className={`font-bold text-white/95 font-sans shrink-0 ${isSm ? "text-[11px] sm:text-[12px]" : "text-[11px] sm:text-[15px]"
-              }`}
-          >
-            Mails
-          </span>
-          <span className="h-[2px] flex-1 mx-1.5 sm:mx-2 bg-gradient-to-r from-white via-white/50 to-transparent" />
-          <span
-            className={`font-medium text-white/90 whitespace-nowrap font-sans shrink-0 ${isSm ? "text-[10px] sm:text-[11px]" : "text-[10px] sm:text-[14px]"
-              }`}
-          >
-            Previously Bad Retention
-          </span>
-        </div>
-      </div>
     </div>
   );
 }

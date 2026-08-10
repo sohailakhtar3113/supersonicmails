@@ -85,7 +85,7 @@ export default function Navbar() {
 
         {/* Logo — relative so it paints above the absolutely-placed glass */}
         <a href="#" className="relative z-10 shrink-0">
-          <LogoBrand hideTextOnMobile />
+          <LogoBrand hideTextOnMobile preload />
         </a>
 
         {/* Right CTA Button */}

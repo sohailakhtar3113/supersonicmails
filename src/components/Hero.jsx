@@ -32,17 +32,44 @@ export default function Hero() {
         <div className="flex flex-col lg:flex-row items-center justify-between gap-6 lg:gap-8">
 
           {/* Left side — text content */}
-          <div className="flex-1 flex flex-col items-center lg:items-start text-center lg:text-left min-w-0">
+          {/*
+            One `gap` drives every space in the stack instead of per-element
+            margins, so badge -> headline -> paragraph -> CTA are identical by
+            construction rather than by hand-tuned numbers.
+
+            The catch: `gap` separates border boxes, but the eye reads the
+            *glyphs*. A line box is taller than its text by (line-height - 1),
+            split evenly above and below, so the headline hides ~0.04em of
+            dead space at each end and the paragraph ~0.35em. Equal gaps would
+            therefore still look unequal.
+
+            Each text block cancels its own half-leading with a negative margin
+            in `em`, which resolves against that element's own font size — so
+            the correction tracks the clamp()'d headline automatically at every
+            viewport instead of needing a value per breakpoint.
+          */}
+          <div className="flex-1 flex flex-col gap-8 md:gap-10 items-center lg:items-start text-center lg:text-left min-w-0">
             <motion.div initial={{ opacity: 0, y: 18 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, ease: EASE_OUT }}>
-              <Badge dot>FOR ECOM BRANDS ALREADY SCALING PAST $100K/MONTH</Badge>
+              {/* Overrides carry `!` because Tailwind resolves competing
+                  utilities by stylesheet order, not class-attribute order. */}
+              <Badge
+                dot
+                className="!px-3 !py-1 !text-[10.5px] sm:!px-3.5 sm:!py-1.5 sm:!text-[12.5px]"
+              >
+                FOR ECOM BRANDS ALREADY SCALING PAST $100K/MONTH
+              </Badge>
             </motion.div>
 
             <motion.h1
               variants={wordC}
               initial="hidden"
               animate="show"
-              className="font-hero mt-7 md:mt-8 text-white w-full text-[length:clamp(30px,8.4vw,64px)] lg:text-[length:clamp(34px,4.8vw,68px)]"
-              style={{ lineHeight: 1.08, letterSpacing: "-0.01em" }}
+              // Positive, because Clash Display's ascent+descent (~1.17em)
+              // exceeds its 1.08 line-height — the glyphs spill *past* the box
+              // rather than sitting inside padding. Values measured, not
+              // derived: offTop -0.044em, offBot -0.023em.
+              className="font-hero -mt-1.5 md:-mt-2.5 mb-[0.023em] text-white w-full text-[length:clamp(30px,8.4vw,64px)] lg:text-[length:clamp(34px,4.8vw,68px)]"
+              style={{ lineHeight: 1.01, letterSpacing: "-0.01em" }}
             >
               <span className="block whitespace-nowrap">
                 {line1.map((w, i) => (
@@ -75,11 +102,14 @@ export default function Hero() {
               initial="hidden"
               animate="show"
               transition={{ delay: 0.55 }}
-              className="font-body mt-7 max-w-[540px] text-[17px] font-medium leading-[1.7] text-[#A7ADBE]"
+              // Measured half-leading for DM Sans at 1.7, and it is asymmetric
+              // (0.177em above vs 0.229em below) because the font's ascent and
+              // descent are not centred in the line box.
+              className="font-body -mt-3 md:-mt-5 -mb-[0.229em] max-w-[540px] text-[17px] font-medium leading-[1.7] text-[#A7ADBE]"
             >
               Boost <span className="font-semibold text-white">LTV</span>, reduce{" "}
               <span className="font-semibold text-white">churn</span>, and make an additional{" "}
-              <span className="font-semibold text-[#9fb4ff]">20–45% new monthly revenue</span> — or we&apos;ll
+              <span className="font-semibold text-[#9fb4ff]">20–45% new monthly revenue</span>, or we&apos;ll
               work for free &amp; send you <span className="font-semibold text-white">$500</span> for wasting
               your time.
             </motion.p>
@@ -89,7 +119,7 @@ export default function Hero() {
               initial="hidden"
               animate="show"
               transition={{ delay: 0.7 }}
-              className="mt-9"
+              className="-mt-1 md:-mt-2"
             >
               <ApplyButton />
             </motion.div>
@@ -99,7 +129,6 @@ export default function Hero() {
               initial="hidden"
               animate="show"
               transition={{ delay: 0.82 }}
-              className="mt-8"
             >
               <TrustRow />
             </motion.div>

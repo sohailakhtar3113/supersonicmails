@@ -1,6 +1,9 @@
 import "./globals.css";
 
 export const metadata = {
+  // Without this, relative Open Graph image paths on the case-study routes
+  // resolve against http://localhost:3000 and break when shared.
+  metadataBase: new URL("https://supersonicmails.com"),
   title: "Supersonic Mails — Make More Profits Without Running More Ads",
   description:
     "ROI-first retention framework for ecom brands scaling past $100k/month. Turn browse abandoners into loyal repeat buyers and extract 20–45% new monthly revenue.",

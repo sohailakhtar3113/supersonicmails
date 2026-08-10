@@ -34,6 +34,8 @@ export default function Home() {
         <StatsPartners />
         {/* See How We Can Help (VSL) */}
         {/* <Vsl /> */}
+        {/* Case Studies — The Results Speak For Themselves */}
+        <CaseStudies />
         {/* Hear From Our Fastest Scaling Brand Owners (2 shorts) + CTA */}
         <ShortsShowcase />
         {/* Verified Trustpilot review screenshots */}
@@ -44,8 +46,6 @@ export default function Home() {
         <Comparison />
         {/* Our 8-Fig Scaling Framework */}
         <Process />
-        {/* Case Studies — The Results Speak For Themselves */}
-        {/* <CaseStudies /> */}
         {/* Frequently Asked Questions */}
         <Faq />
         {/* <FinalCta /> */}
