@@ -375,8 +375,13 @@ export default function Process() {
 
           {/* pt clears the fixed navbar, which ends at 76px on phones and
               112px from md up — hence the hard floors rather than pure svh. */}
-          {/* gap floor of 32px clears the 28px recede lift at every height. */}
-          <div className="relative z-10 flex h-full flex-col items-center justify-center gap-[clamp(32px,4svh,52px)] px-5 pb-[clamp(14px,2svh,32px)] pt-[clamp(88px,11svh,110px)] md:pt-[clamp(126px,15svh,152px)]">
+          {/* Two different gap scales on purpose. Below `sm` the StageRail sits
+              between heading and deck, so the 28px recede lift can only ever
+              reach the rail — a smaller gap is safe, and vertical room is
+              scarce (a 375x667 SE has none to spare). From `sm` up the rail is
+              gone and the deck faces the heading directly, so the gap has to
+              clear the lift outright. */}
+          <div className="relative z-10 flex h-full flex-col items-center justify-center gap-[clamp(28px,3.6svh,44px)] px-5 pb-[clamp(14px,2svh,32px)] pt-[clamp(88px,11svh,110px)] sm:gap-[clamp(46px,5svh,60px)] md:pt-[clamp(126px,15svh,152px)]">
             <div className="shrink-0 text-center">
               <Badge dot className="mb-3 !px-3 !py-1 !text-[10.5px] sm:!text-[12.5px] md:mb-5">
                 OUR FRAMEWORK

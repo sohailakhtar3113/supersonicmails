@@ -129,7 +129,7 @@ export default function DesignShowcase() {
   const close = useCallback(() => setActive(null), []);
 
   return (
-    <section className="relative w-full overflow-hidden bg-[#06070B] py-20 md:py-28">
+    <section className="relative w-full overflow-hidden bg-[#06070B] pt-10 pb-12 md:py-28">
       {/* Ambient radial glow */}
       <div
         className="pointer-events-none absolute left-1/2 top-1/3 h-[560px] w-[900px] -translate-x-1/2 -translate-y-1/2 rounded-full opacity-25 blur-[130px]"
@@ -139,7 +139,7 @@ export default function DesignShowcase() {
         }}
       />
 
-      <Reveal className="container-page relative z-10 mb-12 text-center md:mb-16">
+      <Reveal className="container-page relative z-10 mb-7 text-center md:mb-16">
         <p className="font-display text-[12px] font-semibold uppercase tracking-[0.22em] text-[#7FA0FF]">
           Our design work
         </p>
@@ -154,11 +154,15 @@ export default function DesignShowcase() {
       </Reveal>
 
       <div className="relative z-10 flex flex-col gap-5 md:gap-7">
-        <DesignRow items={ROW_ONE} dur="140s" onOpen={open} />
-        <DesignRow items={ROW_TWO} dur="165s" onOpen={open} />
+        {/* Duration is time-per-lap, so it had to come down twice over: the
+            rows went from 10 cards to 7 and 6, which shortened the track and
+            made the same 140s read ~30% slower than before. 88s/96s restores
+            the old pace and adds a little on top. */}
+        <DesignRow items={ROW_ONE} dur="88s" onOpen={open} />
+        <DesignRow items={ROW_TWO} dur="96s" onOpen={open} />
       </div>
 
-      <Reveal className="container-page relative z-10 mt-12 flex justify-center md:mt-14">
+      <Reveal className="container-page relative z-10 mt-8 flex justify-center md:mt-14">
         <ApplyButton label="Get Designs Like These" />
       </Reveal>
 

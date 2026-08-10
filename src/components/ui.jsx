@@ -71,31 +71,100 @@ export function Badge({ children, dot = false, className = "" }) {
   );
 }
 
-const TRUST_AVATARS = [
-  "/assets/2q7ubrEzfT3uRSFujLeumQfRlU.png",
-  "/assets/1eIR9llHqEtPs0OG0aUzb2766MY.png",
-  "/assets/Lt7KvrrtPM45JOWkF2nhTYQs0c.png",
-  "/assets/p62fCeZedMHdQ5WzI0fgM8CAfA.png",
-  "/assets/o1zHnx7WrHXWpPUMcpOETln1Ubg.png",
+/**
+ * Client brand marks, not faces.
+ *
+ * The stacked-avatar pattern does not require photographs — it reads as "a set
+ * of people/companies vouch for this", and swapping headshots for the client's
+ * own marks turns decorative portraits into actual evidence. It also sidesteps
+ * publishing anyone's likeness.
+ *
+ * Only these three of the thirteen brand logos survive a 38px circle. Nine are
+ * wide wordmarks (up to 6.7:1) that reduce to unreadable smears, and Zenpilo is
+ * dropped despite fitting because its heart-and-pulse mark is near-identical to
+ * Avonwell's — side by side in a stack they look like a duplicate, which reads
+ * as a bug rather than a roster.
+ *
+ * `plain` marks the one logo that ships as its own white disc; the rest are
+ * white-on-transparent and need a dark chip behind them.
+ */
+const TRUST_MARKS = [
+  { src: "/brands/himalayan-co.png", name: "The Himalayan Co.", plain: true },
+  { src: "/brands/high-rider.png", name: "High Rider" },
+  { src: "/brands/avonwell.png", name: "Avonwell" },
 ];
+
+function StarRow({ className = "" }) {
+  // Inline SVG rather than the ★ character, which renders at a different
+  // weight and baseline in every font and turns into an emoji on some phones.
+  return (
+    <span className={`flex items-center gap-[3px] ${className}`} aria-hidden>
+      {Array.from({ length: 5 }).map((_, i) => (
+        <svg key={i} viewBox="0 0 24 24" className="h-[13px] w-[13px]" fill="#F5B301">
+          <path d="M12 2.6l2.9 6.1 6.6.9-4.8 4.6 1.2 6.6L12 17.6 6.1 20.8l1.2-6.6L2.5 9.6l6.6-.9L12 2.6z" />
+        </svg>
+      ))}
+    </span>
+  );
+}
 
 export function TrustRow({ className = "" }) {
   return (
-    <div className={`flex items-center gap-3 ${className}`}>
+    <div className={`group flex items-center gap-3.5 ${className}`}>
       <div className="flex items-center">
-        {TRUST_AVATARS.map((src, i) => (
-          <img
-            key={i}
-            src={src}
-            alt=""
-            className="h-8 w-8 rounded-full border-2 border-[#00020F] object-cover"
-            style={{ marginLeft: i === 0 ? 0 : "-10px", zIndex: TRUST_AVATARS.length - i }}
-          />
+        {TRUST_MARKS.map((m, i) => (
+          <span
+            key={m.src}
+            title={m.name}
+            style={{
+              marginLeft: i === 0 ? 0 : "-12px",
+              zIndex: TRUST_MARKS.length - i,
+              transitionDelay: `${i * 45}ms`,
+            }}
+            className={`relative grid h-10 w-10 shrink-0 place-items-center overflow-hidden rounded-full ring-2 ring-[#00020F] transition-transform duration-300 ease-out group-hover:-translate-y-[3px] ${
+              m.plain
+                ? "bg-white"
+                : "border border-white/[0.14] bg-[linear-gradient(180deg,#18224C,#0A0E22)]"
+            }`}
+          >
+            <img
+              src={m.src}
+              alt={m.name}
+              loading="lazy"
+              draggable={false}
+              // max-* rather than a fixed width: these marks range from 1.0:1
+              // to 1.5:1, so constraining one axis lets the other overflow the
+              // circle and get clipped by overflow-hidden.
+              className={
+                m.plain
+                  ? "h-full w-full object-cover"
+                  : "max-h-[52%] max-w-[62%] object-contain [filter:brightness(0)_invert(1)]"
+              }
+            />
+          </span>
         ))}
+
+        {/* Counter chip closes the set, so three marks read as a sample of a
+            roster rather than as the whole client list. */}
+        {/* Sits above the marks, not below: at z-0 the overlap swallowed the
+            "+" and it read as "·42". */}
+        <span
+          style={{
+            marginLeft: "-12px",
+            zIndex: TRUST_MARKS.length + 1,
+            transitionDelay: "135ms",
+          }}
+          className="relative grid h-10 w-10 shrink-0 place-items-center rounded-full border border-[#3362FF]/35 bg-[#12224F] font-display text-[11.5px] font-semibold text-[#AEC4FF] ring-2 ring-[#00020F] transition-transform duration-300 ease-out group-hover:-translate-y-[3px]"
+        >
+          +42
+        </span>
       </div>
-      <div className="flex flex-col leading-tight">
-        <span className="text-[13px] tracking-wide text-[#F5B301]">★★★★★</span>
-        <span className="font-body text-[13px] font-medium text-[#DDE1EC]">Trusted by 35+ Brands</span>
+
+      <div className="flex flex-col gap-1 leading-none">
+        <StarRow />
+        <span className="font-body text-[13px] font-medium text-[#DDE1EC]">
+          Trusted by 45+ Brands
+        </span>
       </div>
     </div>
   );

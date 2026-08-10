@@ -9,7 +9,7 @@ import { Reveal, Stagger, revealSm } from "./motion";
  */
 export default function TrustedPartners() {
   return (
-    <section className="container-page relative py-10 md:py-14">
+    <section className="container-page relative pt-8 pb-5 md:py-14">
       <Reveal className="text-center">
         <p className="font-body text-[12px] font-semibold uppercase tracking-[0.22em] text-[#8FA9FF]">
           Our Trusted Partners

@@ -57,7 +57,7 @@ const STAT_ITEMS = [
     key: "revenue",
     icon: IconRevenue,
     eyebrow: "Revenue driven",
-    value: 7,
+    value: 8,
     suffix: "-Figs",
     blurb:
       "7-Figures in strictly tracked, attributable backend revenue driven for our partners.",
@@ -66,7 +66,7 @@ const STAT_ITEMS = [
     key: "brands",
     icon: IconBrands,
     eyebrow: "Portfolio",
-    value: 35,
+    value: 45,
     suffix: "+",
     unit: "Brands",
     blurb:
@@ -76,7 +76,7 @@ const STAT_ITEMS = [
     key: "emails",
     icon: IconSend,
     eyebrow: "Volume",
-    value: 2,
+    value: 5,
     suffix: "M+",
     unit: "Monthly",
     blurb:
@@ -211,7 +211,7 @@ export default function StatsPartners() {
   const started = useInView(gridRef, { once: true, amount: 0.2 });
 
   return (
-    <section className="container-page relative py-16 md:py-24">
+    <section className="container-page relative pt-8 pb-14 md:py-24">
       {/* Ambient section glow */}
       <div
         className="pointer-events-none absolute left-1/2 top-10 h-[420px] w-[820px] -translate-x-1/2 rounded-full opacity-[0.22] blur-[130px]"
@@ -227,7 +227,7 @@ export default function StatsPartners() {
           initial={reduce ? false : { opacity: 0, y: 20 }}
           animate={headInView ? { opacity: 1, y: 0 } : undefined}
           transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
-          className="mb-11 max-w-2xl md:mb-14"
+          className="mb-7 max-w-2xl md:mb-14"
         >
           <span className="font-body text-[12px] font-semibold uppercase tracking-[0.22em] text-[#8FA9FF]">
             The numbers
