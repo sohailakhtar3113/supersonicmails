@@ -102,7 +102,11 @@ export default function CaseStudies() {
         }}
       />
 
-      <Reveal className="relative z-10 mb-8 flex flex-col items-center -mt-14 text-center md:mb-12">
+      {/* The -56px pull is sized for desktop, where the section carries
+          md:pt-12. On phones there is only pt-6 above it, so the full pull
+          left the badge almost touching the section before it — eased to
+          -24px below md. */}
+      <Reveal className="relative z-10 -mt-6 mb-8 flex flex-col items-center text-center md:-mt-14 md:mb-12">
         <Badge className="mb-6">Case Studies</Badge>
         <h2
           className="text-[22px] font-semibold leading-[1.2] text-white sm:text-[32px] md:text-[46px]"

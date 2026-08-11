@@ -3,6 +3,8 @@ import { notFound } from "next/navigation";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import CaseGallery from "@/components/CaseGallery";
+import ShortsShowcase from "@/components/ShortsShowcase";
+import TrustReviews from "@/components/TrustReviews";
 import { ApplyButton, TrustRow } from "@/components/ui";
 import { CASE_STUDIES, getCaseStudy } from "@/components/caseStudiesData";
 
@@ -66,6 +68,73 @@ function Block({ block }) {
           </li>
         ))}
       </ul>
+    );
+
+  // Numbered audit findings. Each is a claim plus its reasoning, so the claim
+  // is promoted to a heading — flowing them as paragraphs buries the five
+  // things the section exists to say.
+  if (block.findings)
+    return (
+      <ol className="flex flex-col gap-3.5">
+        {block.findings.map((f, i) => (
+          <li
+            key={f.title}
+            className="flex gap-4 rounded-[18px] border border-white/[0.09] bg-[linear-gradient(180deg,rgba(16,22,48,0.5),rgba(7,10,28,0.4))] p-5 md:gap-5 md:p-6"
+          >
+            <span
+              aria-hidden
+              className="mt-[2px] grid h-7 w-7 shrink-0 place-items-center rounded-full border border-[#3362FF]/35 bg-[#3362FF]/12 font-display text-[12.5px] font-semibold text-[#9fb4ff]"
+            >
+              {i + 1}
+            </span>
+            <div className="min-w-0">
+              <p className="font-display text-[16px] font-semibold leading-[1.4] text-white md:text-[18px]">
+                {f.title}
+              </p>
+              <p className="mt-2.5 font-rethink text-[15.5px] leading-[1.7] text-[#A7ADBE] md:text-[16.5px]">
+                {f.text}
+              </p>
+            </div>
+          </li>
+        ))}
+      </ol>
+    );
+
+  // A sequence, not a list — the copy's whole point is that dropping out of any
+  // one stage breaks the next, so the nodes are joined by a continuous rail.
+  if (block.stages)
+    return (
+      <ol className="flex flex-col">
+        {block.stages.map((s, i) => (
+          <li key={s.label} className="grid grid-cols-[auto_1fr] gap-x-4 md:gap-x-5">
+            <div aria-hidden className="flex flex-col items-center">
+              <span className="grid h-[26px] w-[26px] shrink-0 place-items-center rounded-full border border-[#3362FF]/45 bg-[#3362FF]/12">
+                <span className="h-[7px] w-[7px] rounded-full bg-[#3362FF] shadow-[0_0_10px_2px_rgba(51,98,255,0.6)]" />
+              </span>
+              {/* Skipped on the last node so the rail stops at Stage 4 rather
+                  than trailing into the paragraph that follows. */}
+              {i < block.stages.length - 1 && (
+                <span className="mt-1.5 w-px flex-1 bg-[linear-gradient(180deg,rgba(51,98,255,0.55),rgba(51,98,255,0.1))]" />
+              )}
+            </div>
+            {/* Bottom padding is what spaces the steps, and it has to sit on
+                the content column so the rail keeps stretching through the
+                gap. Dropped on the last step, which has no rail to fill. */}
+            <div className={i < block.stages.length - 1 ? "min-w-0 pb-7" : "min-w-0"}>
+              <p className="font-display text-[16px] font-semibold leading-[1.4] text-white md:text-[18px]">
+                <span className="text-[#7FA0FF]">{s.label}</span>
+                {/* Real spaces, not margin: a margin looks right but copies
+                    and reads aloud as "Stage 1—Certainty". */}
+                <span className="text-[#5C6480]">{" — "}</span>
+                {s.title}
+              </p>
+              <p className="mt-2.5 font-rethink text-[15.5px] leading-[1.7] text-[#A7ADBE] md:text-[16.5px]">
+                {s.text}
+              </p>
+            </div>
+          </li>
+        ))}
+      </ol>
     );
 
   if (block.callout)
@@ -185,7 +254,9 @@ export default async function CaseStudyPage({ params }) {
     <>
       <Navbar />
       <main className="overflow-x-clip">
-        <article className="container-page relative pb-16 pt-[132px] md:pb-24 md:pt-[168px]">
+        {/* Bottom padding is smaller than it looks: ShortsShowcase adds its
+            own pt below this, so the old pb-16/24 stacked into a gap. */}
+        <article className="container-page relative pb-10 pt-[132px] md:pb-14 md:pt-[168px]">
           {/* Ambient glow */}
           <div
             aria-hidden
@@ -248,19 +319,33 @@ export default async function CaseStudyPage({ params }) {
               </p>
             )}
 
-            {/* Close */}
-            <div className="mt-14 flex flex-col items-center gap-6 border-t border-white/[0.08] pt-12 text-center md:mt-16">
-              <h2
-                className="text-[24px] font-semibold leading-[1.2] text-white md:text-[32px]"
-                style={{ fontFamily: "'Clash Display', Georgia, serif" }}
-              >
-                Ready to Scale Your Brand?
-              </h2>
-              <ApplyButton label="Get A Free Audit" />
-              <TrustRow />
-            </div>
           </div>
         </article>
+
+        {/* The same proof stack the homepage closes with. Someone who has just
+            read a full breakdown is the most persuadable reader on the site,
+            and until now the page went straight from the last paragraph to the
+            ask with nothing corroborating it.
+
+            Both sections are full-bleed, so they sit outside the article —
+            nesting them in its 820px column would crush the video cards and
+            double up the horizontal padding. Their built-in CTA and trust row
+            are switched off so the page still ends on exactly one ask. */}
+        <ShortsShowcase showCta={false} />
+        <TrustReviews showTrustRow={false} />
+
+        <section className="container-page pt-6 pb-16 md:pt-12 md:pb-24">
+          <div className="mx-auto flex max-w-[820px] flex-col items-center gap-6 text-center">
+            <h2
+              className="text-[24px] font-semibold leading-[1.2] text-white md:text-[32px]"
+              style={{ fontFamily: "'Clash Display', Georgia, serif" }}
+            >
+              Ready to Scale Your Brand?
+            </h2>
+            <ApplyButton label="Get A Free Audit" />
+            <TrustRow />
+          </div>
+        </section>
       </main>
       <Footer />
     </>

@@ -60,7 +60,7 @@ const STAT_ITEMS = [
     value: 8,
     suffix: "-Figs",
     blurb:
-      "7-Figures in strictly tracked, attributable backend revenue driven for our partners.",
+      "8-Figures in strictly tracked, attributable backend revenue driven for our partners.",
   },
   {
     key: "brands",
@@ -220,7 +220,11 @@ export default function StatsPartners() {
         }}
       />
 
-      <div className="relative z-10">
+      {/* The -80px pull closes a gap that only exists on desktop, where the
+          section carries py-24. On phones the section has just pt-8, so the
+          same pull wiped the gap out completely and the heading collided with
+          the CTA above it — hence md: only. */}
+      <div className="relative z-10 md:-mt-20">
         {/* Heading */}
         <motion.div
           ref={headRef}

@@ -1,5 +1,6 @@
 "use client";
 import { useEffect, useState } from "react";
+import Link from "next/link";
 import { AnimatePresence, motion } from "motion/react";
 import LogoBrand from "./LogoBrand";
 import { ApplyButton } from "./ui";
@@ -86,10 +87,17 @@ export default function Navbar() {
           )}
         </AnimatePresence>
 
-        {/* Logo — relative so it paints above the absolutely-placed glass */}
-        <a href="#" className="relative z-10 shrink-0">
+        {/* Logo — relative so it paints above the absolutely-placed glass.
+            next/link, not a bare anchor: on a case-study page this is the only
+            way back to the homepage, and a plain <a> would drop the client
+            router and reload the whole app. */}
+        <Link
+          href="/"
+          aria-label="Supersonic Mails — home"
+          className="relative z-10 shrink-0 rounded-lg focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#3362FF] focus-visible:ring-offset-2 focus-visible:ring-offset-[#00020F]"
+        >
           <LogoBrand hideTextOnMobile preload />
-        </a>
+        </Link>
 
         {/* Right CTA Button */}
         <div className="relative z-10">

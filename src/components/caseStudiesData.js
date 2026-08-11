@@ -12,6 +12,8 @@
  *   { lead }    opening paragraph, set larger
  *   { arrows }  the "→" bullet list
  *   { bullets } plain bullet list
+ *   { findings } numbered diagnostic cards, [{ title, text }]
+ *   { stages }  connected sequence rail, [{ label, title, text }]
  *   { callout } emphasised result line
  *   { img }     { src, alt, caption }
  *   { gallery } { title, images: [{ src, alt }] }
@@ -19,7 +21,8 @@
  *   { note }    muted aside
  *   { cta }     { blurb, label, href }
  */
-const CAL = "https://calendly.com/sameer-badretention/30min";
+import { BOOKING_URL as CAL } from "./site";
+
 export const CS_DIR = "/casestudies";
 
 export const CASE_STUDIES = [
@@ -166,21 +169,6 @@ export const CASE_STUDIES = [
         },
       },
       { p: "I love greens, I bet you love it too" },
-
-
-      {
-        gallery: {
-          title: "Some more results",
-          images: [
-            { src: `${CS_DIR}/case2/result-1.jpg`, alt: "Business performance summary, Jun 25 to Jul 25 2025: 23,042.61 total revenue with 5,182.04 attributed, up 49 percent" },
-            { src: `${CS_DIR}/case2/result-2.jpg`, alt: "Business performance summary, Jun 20 to Jul 20 2025: 61,737.34 total revenue with 16,676.51 attributed, 27.01 percent of total" },
-            { src: `${CS_DIR}/case2/result-3.jpg`, alt: "Business performance summary, March 2026: 413,053.21 total revenue with 168,943.64 attributed, 40.90 percent of total" },
-            { src: `${CS_DIR}/case2/result-4.png`, alt: "Conversion rate over time before and after: 0.48 percent rising to 3.2 percent, a 132 percent increase" },
-            { src: `${CS_DIR}/case2/result-5.jpg`, alt: "Signup form stats: 13.63 percent submit rate rated Excellent, 188 submits from 1.4K form views" },
-            { src: `${CS_DIR}/case2/result-6.png`, alt: "Business performance summary, Jun 24 to Aug 14 2025: 86,272.26 total revenue with 21,395.53 attributed, up 2278 percent" },
-          ],
-        },
-      },
     ],
   },
   {
@@ -234,32 +222,151 @@ export const CASE_STUDIES = [
         callout:
           "Welcome email open rates went from 33% to 59% so does the placed order rate even with the graphic emails.",
       },
-
-      {
-        gallery: {
-          title: "Some more results",
-          images: [
-            { src: `${CS_DIR}/case3/result-1.jpg`, alt: "Business performance summary, Jun 25 to Jul 25 2025: 23,042.61 total revenue with 5,182.04 attributed, up 49 percent" },
-            { src: `${CS_DIR}/case3/result-2.jpg`, alt: "Business performance summary, Jun 20 to Jul 20 2025: 61,737.34 total revenue with 16,676.51 attributed, 27.01 percent of total" },
-            { src: `${CS_DIR}/case3/result-3.jpg`, alt: "Business performance summary, March 2026: 413,053.21 total revenue with 168,943.64 attributed, 40.90 percent of total" },
-            { src: `${CS_DIR}/case3/result-4.png`, alt: "Conversion rate over time before and after: 0.48 percent rising to 3.2 percent, a 132 percent increase" },
-            { src: `${CS_DIR}/case3/result-5.jpg`, alt: "Signup form stats: 13.63 percent submit rate rated Excellent, 188 submits from 1.4K form views" },
-            { src: `${CS_DIR}/case3/result-6.png`, alt: "Business performance summary, Jun 24 to Aug 14 2025: 86,272.26 total revenue with 21,395.53 attributed, up 2278 percent" },
-          ],
-        },
-      },
     ],
   },
   {
     slug: "marroomi-50-percent-retention",
     img: `${CS_DIR}/marroomi-retention.jpg`,
     alt: "Returning customer rate chart averaging 50.76% between March 25 and April 24, 2026",
-    title: "How We Took Marroomi.com's Returning Customer Rate To 50%",
-    desc: "Then turned one-time buyers into repeat customers, twice as often.",
+    title: "How We Took Marroomi's Returning Customer Rate To 50%",
+    desc: "Not half of a segment. Half of everyone who buys. Here's the post-purchase system behind the number.",
     metric: "50.76%",
     metricLabel: "Returning customer rate",
-    published: false,
-    body: [{ p: "The full breakdown of this build is being written up and will be published here shortly." }],
+    published: true,
+    body: [
+      { lead: "Half of Marroomi's customers now come back and buy again." },
+      {
+        p: "Not half of the people who saw an email. Not half of a segment. Half of everyone who buys.",
+      },
+      {
+        p: "That number didn't come from writing better subject lines. It came from rebuilding what happens to a customer in the days and weeks after they hand over money — the part almost every brand treats as a shipping notification and nothing else.",
+      },
+
+      { h2: "The situation" },
+      {
+        p: "Marroomi had the hard part solved. Product people liked. Traffic that converted. A real business.",
+      },
+      {
+        p: "What they had underneath it was the same thing almost every 7-figure brand has: a front end doing all the work and a back end doing almost none.",
+      },
+      { p: "The pattern looked like this:" },
+      {
+        bullets: [
+          "Customers bought once and disappeared",
+          "Every month started near zero and had to be rebuilt with ad spend",
+          "Refunds and chargebacks were quietly eating margin nobody had time to investigate",
+          "The post-purchase experience was a confirmation email, a tracking link, and silence",
+        ],
+      },
+      {
+        p: "Nothing here was broken in an obvious way. That's exactly why it goes unfixed for years. There's no alarm that goes off when a customer decides not to come back. They just don't.",
+      },
+      {
+        p: "The cost of that is invisible on the dashboard and enormous on the P&L. Every non-returning customer means paying full acquisition price for the next one. Forever.",
+      },
+
+      { h2: "What we found in the audit" },
+      {
+        p: "Before touching anything, we went through the account the same way we go through every account — same checks, same order.",
+      },
+      { p: "What surfaced:" },
+      {
+        findings: [
+          {
+            title: "The post-purchase window was dead air.",
+            text: "The highest-trust moment a brand ever gets with a customer is the gap between “I paid” and “it arrived.” Marroomi was using it for logistics only. No expectation setting, no usage guidance, no reason to be excited.",
+          },
+          {
+            title: "Shipping expectations weren't being managed.",
+            text: "Customers weren't told clearly enough when the product would land or what would happen along the way. Silence during a wait doesn't read as neutral — it reads as something went wrong.",
+          },
+          {
+            title: "Refunds and chargebacks were a communication problem, not a product problem.",
+            text: "A meaningful share of disputes trace back to the same root: the customer didn't know what to expect, didn't hear from the brand, got anxious, and went to their bank instead of to support. That's fixable with sequencing, not with policy.",
+          },
+          {
+            title: "Nobody was being taught how to use the product properly.",
+            text: "This is the one most brands never connect to churn. A customer who uses the product wrong never gets the result, and a customer who never gets the result never reorders. That looks like a retention problem. It's an onboarding problem.",
+          },
+          {
+            title: "Everyone was getting the same message.",
+            text: "No meaningful separation between buyers and non-buyers, first-time and repeat, engaged and dormant. One list, one message, one result — a slow decline in engagement that drags deliverability down with it.",
+          },
+        ],
+      },
+
+      { h2: "The mechanism: the Post-Purchase Habit Loop" },
+      { p: "Repeat purchase isn't a persuasion problem. It's a habit problem." },
+      {
+        p: "Nobody reorders because an email convinced them to. They reorder because the product became part of their routine — and the brand stayed present while that routine formed.",
+      },
+      {
+        p: "So the goal isn't “send more emails to past customers.” The goal is to get the customer through four stages without dropping out at any of them:",
+      },
+      {
+        stages: [
+          {
+            label: "Stage 1",
+            title: "Certainty",
+            text: "From the moment they pay until the box lands, they know exactly what's happening. Anxiety is what produces refund requests and chargebacks. Certainty removes it.",
+          },
+          {
+            label: "Stage 2",
+            title: "Correct usage",
+            text: "They know how to use the product, how much, how often, and what to expect week by week. This is where most churn is silently created and where it's cheapest to prevent.",
+          },
+          {
+            label: "Stage 3",
+            title: "Felt result",
+            text: "They stay consistent long enough to actually notice a difference. Most customers quit before the product has had a chance to work, then conclude it didn't.",
+          },
+          {
+            label: "Stage 4",
+            title: "Reorder becomes automatic",
+            text: "They're reminded before they run out, not after. The reorder is one tap, at the right moment, from a brand they now trust.",
+          },
+        ],
+      },
+      {
+        p: "Break any stage and the customer leaks out. Hold all four and you get a returning customer rate that stops looking normal.",
+      },
+      {
+        p: "That's the loop we built for Marroomi. We also took other necessary steps such sending consistent campaigns to the right customer at the right time, high-personalised segmentations, so on & so forth.",
+      },
+
+      { h2: "The results" },
+      { callout: "50% returning customer rate." },
+      {
+        p: "Half of all customers come back. For context, a typical DTC brand sits far below this, which is why so many of them are permanently dependent on paid acquisition to stand still.",
+      },
+      { p: "Supporting outcomes:" },
+      {
+        bullets: ["Chargebacks reduced", "Refund rate reduced", "27% Email revenue"],
+      },
+
+      { h2: "Who this applies to" },
+      { p: "If you're running a 7 or 8 figure store and:" },
+      {
+        bullets: [
+          "Customers buy once and vanish",
+          "Every month starts from zero and gets rebuilt with ad spend",
+          "Chargebacks and refunds are eating margin you've stopped investigating",
+          "Your post-purchase experience is a tracking link and silence",
+          "Email is a small fraction of revenue and you know it should be bigger",
+        ],
+      },
+      {
+        p: "…then you have the same gap Marroomi had. And the gap is where the money is.",
+      },
+      {
+        cta: {
+          label: "Learn More",
+          href: CAL,
+          blurb:
+            "We're taking on 3 more brands before this Quarter, to give them a full deep dive FREE Audit custom to their brand. If you're interested in learning more, tap the learn more button below. We'll see you on the other side.",
+        },
+      },
+    ],
   },
 ];
 

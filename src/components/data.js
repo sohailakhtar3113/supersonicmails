@@ -42,10 +42,17 @@ export const STATS = [
   { value: "64%", label: "Maximum Returning Customer Rate" },
 ];
 
+/**
+ * `mono: false` opts a logo out of the white monochrome filter.
+ *
+ * The Omnisend mark is already drawn for dark backgrounds — white wordmark,
+ * filled green "Partner" chip with black text. Forcing it white flattens the
+ * chip and its label to the same colour and it renders as a solid blob.
+ */
 export const PARTNERS = [
-  `${A}/7KI3TzlPOSXyEQr66tFJkMVDM.png`,
-  `${A}/DzFZKUjixbtFeH9njYuebwGNkR0.png`,
-  `${A}/sMsZmP7vvOjGFDzCJ7JZ7KNExTQ.webp`,
+  { src: `${A}/7KI3TzlPOSXyEQr66tFJkMVDM.png`, alt: "Shopify Partners", mono: true },
+  { src: `${A}/DzFZKUjixbtFeH9njYuebwGNkR0.png`, alt: "Klaviyo Partners", mono: true },
+  { src: "/brands/omnisend-partner-primary-logo.webp", alt: "Omnisend Partner", mono: false },
 ];
 
 export const VIDEO_TESTIMONIALS = [

@@ -1,7 +1,17 @@
 "use client";
 import { motion } from "motion/react";
+import { BOOKING_URL } from "./site";
 
-export function ApplyButton({ label = "Claim a Free Audit", className = "" }) {
+/**
+ * `href` defaults to the booking link so every CTA on the site points at it
+ * without each caller having to remember — these were all `href="#"` and went
+ * nowhere.
+ */
+export function ApplyButton({
+  label = "Claim a Free Audit",
+  href = BOOKING_URL,
+  className = "",
+}) {
   return (
     <>
       {/* SVG Gooey Filter for liquid blob hover effect */}
@@ -21,7 +31,9 @@ export function ApplyButton({ label = "Claim a Free Audit", className = "" }) {
       </svg>
 
       <motion.a
-        href="#"
+        href={href}
+        target="_blank"
+        rel="noopener noreferrer"
         className={`blob-btn ${className}`}
         whileHover={{ scale: 1.04 }}
         whileTap={{ scale: 0.97 }}

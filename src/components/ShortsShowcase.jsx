@@ -95,7 +95,12 @@ function ShortCard({ id, label }) {
   );
 }
 
-export default function ShortsShowcase() {
+/**
+ * `showCta` exists for the case-study pages, which reuse this section but end
+ * on their own single ask — leaving this button in would put two CTAs a few
+ * hundred pixels apart.
+ */
+export default function ShortsShowcase({ showCta = true }) {
   return (
     <section className="relative w-full overflow-hidden bg-[#06070B] pt-6 pb-14 md:pt-12 md:pb-24">
       {/* Ambient radial glow */}
@@ -126,9 +131,11 @@ export default function ShortsShowcase() {
           ))}
         </Stagger>
 
-        <Reveal variants={revealSm} className="mt-12 flex justify-center md:mt-14">
-          <ApplyButton label="Apply for Free Audit" />
-        </Reveal>
+        {showCta && (
+          <Reveal variants={revealSm} className="mt-12 flex justify-center md:mt-14">
+            <ApplyButton label="Apply for Free Audit" />
+          </Reveal>
+        )}
       </div>
     </section>
   );

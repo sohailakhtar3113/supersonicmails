@@ -345,7 +345,9 @@ export default function Process() {
   });
 
   return (
-    <section className="relative">
+    // No scroll-mt here: the anchor is the top of the pinned runway, and
+    // landing exactly there is what starts the deck animation from frame one.
+    <section id="process" className="relative">
       <div ref={runwayRef} className="relative h-[360vh]">
         {/*
           Everything in this stage is sized off the *viewport height*, not a
@@ -410,8 +412,14 @@ export default function Process() {
         </div>
       </div>
 
-      {/* Released — normal flow resumes */}
-      <div className="container-page">
+      {/* Released — normal flow resumes.
+          On phones the deck finishes well short of the stage floor, so the
+          pinned frame ends with ~150px of dead air that the CTA then sits
+          below. The pull lifts it into that empty band; `relative z-10` is
+          what makes it work, because the stage is position:sticky and would
+          otherwise paint over the button and eat its clicks. Phones only —
+          from sm up the deck is taller and the gap is already right. */}
+      <div className="container-page relative z-10 -mt-20 sm:mt-0">
         <Reveal className="flex flex-col items-center gap-6 pb-4 pt-2 md:pt-6">
           <ApplyButton />
           <TrustRow />

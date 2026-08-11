@@ -100,9 +100,17 @@ function ReviewFrame({ src, alt, author }) {
   );
 }
 
-export default function TrustReviews() {
+/**
+ * `showTrustRow` exists for the case-study pages, which close with their own
+ * TrustRow directly below this section — rendering both puts the same avatars
+ * on screen twice within a scroll or two.
+ */
+export default function TrustReviews({ showTrustRow = true }) {
   return (
-    <section className="relative w-full overflow-hidden bg-[#06070B] pt-4 pb-12 md:pt-10 md:pb-20">
+    <section
+      id="reviews"
+      className="relative w-full scroll-mt-28 overflow-hidden bg-[#06070B] pt-4 pb-12 md:pt-10 md:pb-20"
+    >
       {/* Ambient radial glow — matches ShortsShowcase */}
       <div
         className="pointer-events-none absolute left-1/2 top-1/3 h-[520px] w-[820px] -translate-x-1/2 -translate-y-1/2 rounded-full opacity-25 blur-[130px]"
@@ -144,9 +152,11 @@ export default function TrustReviews() {
           </div> */}
 
           {/* Trusted-by avatars — sits between the rating bar and the reviews */}
-          <div className="mt-6 flex justify-center">
-            <TrustRow />
-          </div>
+          {showTrustRow && (
+            <div className="mt-6 flex justify-center">
+              <TrustRow />
+            </div>
+          )}
         </Reveal>
 
         <Stagger className="mt-10 flex flex-wrap items-start justify-center gap-6 md:mt-12 md:gap-8">

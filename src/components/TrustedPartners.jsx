@@ -5,7 +5,9 @@ import { Reveal, Stagger, revealSm } from "./motion";
 /**
  * Slim "Our Trusted Partners" band — the tech stack we build on
  * (Shopify · Klaviyo · Omnisend). Sits just above the stats section.
- * Logos render as clean monochrome-white marks for a premium, uniform read.
+ * Logos render as clean monochrome-white marks for a premium, uniform read,
+ * at full brightness with no hover state — these are credibility marks, not
+ * controls, so dimming them until moused over only weakened the proof.
  */
 export default function TrustedPartners() {
   return (
@@ -17,18 +19,20 @@ export default function TrustedPartners() {
       </Reveal>
 
       <Stagger className="mt-7 flex flex-wrap items-center justify-center gap-x-8 gap-y-5 sm:gap-x-16 md:mt-9 md:gap-x-20">
-        {PARTNERS.map((src, i) => (
+        {PARTNERS.map((p) => (
           <Reveal
-            key={i}
+            key={p.src}
             variants={revealSm}
             className="flex items-center justify-center"
           >
             <img
-              src={src}
-              alt="Partner logo"
+              src={p.src}
+              alt={p.alt}
               loading="lazy"
               draggable={false}
-              className="h-6 w-auto object-contain opacity-60 grayscale transition duration-300 ease-out hover:opacity-100 hover:grayscale-0 sm:h-7 md:h-8 [filter:brightness(0)_invert(1)] hover:[filter:none]"
+              className={`h-6 w-auto object-contain sm:h-7 md:h-8 ${
+                p.mono ? "[filter:brightness(0)_invert(1)]" : ""
+              }`}
             />
           </Reveal>
         ))}
