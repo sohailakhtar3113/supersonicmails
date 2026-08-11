@@ -153,7 +153,7 @@ export const FAQ = [
   },
   {
     q: "How fast can you make the emails live?",
-    a: "We make your first email live in under 24 hours, and every flow live in under 10 days, faster than any agency out there. Why speed matters: if you're doing multi-six-figures a month, every day you wait is $10K+ in revenue left on the table. We don't make you wait to start making money.",
+    a: "We make your first email live in under 24 hours, and every flow live in under 7 days, faster than any agency out there. Why speed matters: if you're doing multi-six-figures a month, every day you wait is $10K+ in revenue left on the table. We don't make you wait to start making money.",
   },
   {
     q: "We've been burned by an agency before. Why would this be different?",

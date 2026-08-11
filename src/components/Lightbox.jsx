@@ -53,19 +53,27 @@ export default function Lightbox({ src, alt, onClose, maxWidth = 480 }) {
         <div className="no-scrollbar max-h-[90vh] overflow-y-auto overscroll-contain">
           <img src={src} alt={alt} className="w-full" draggable={false} />
         </div>
-      </motion.div>
 
-      <button
-        ref={closeRef}
-        type="button"
-        onClick={onClose}
-        aria-label="Close preview"
-        className="absolute right-4 top-4 grid h-11 w-11 cursor-pointer place-items-center rounded-full border border-white/15 bg-white/10 text-white backdrop-blur-md transition hover:bg-white/20 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#3362FF] md:right-7 md:top-7"
-      >
-        <svg viewBox="0 0 24 24" className="h-5 w-5" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" aria-hidden>
-          <path d="M18 6 6 18M6 6l12 12" />
-        </svg>
-      </button>
+        {/* Inside the panel, not on the overlay. Anchored to the viewport it
+            drifted to the far corner of the screen whenever the panel was
+            narrow — on a 480px email design that is most of a monitor away
+            from the thing it closes.
+            Dark plate rather than the previous white/10: these designs are
+            mostly white at the top, and a translucent white button on white
+            artwork is invisible. Sits above the scroll container, so it stays
+            put while the design scrolls under it. */}
+        <button
+          ref={closeRef}
+          type="button"
+          onClick={onClose}
+          aria-label="Close preview"
+          className="absolute right-3 top-3 z-10 grid h-10 w-10 cursor-pointer place-items-center rounded-full border border-white/20 bg-black/55 text-white backdrop-blur-md transition hover:bg-black/75 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#3362FF]"
+        >
+          <svg viewBox="0 0 24 24" className="h-[18px] w-[18px]" fill="none" stroke="currentColor" strokeWidth="2.2" strokeLinecap="round" aria-hidden>
+            <path d="M18 6 6 18M6 6l12 12" />
+          </svg>
+        </button>
+      </motion.div>
     </motion.div>
   );
 }

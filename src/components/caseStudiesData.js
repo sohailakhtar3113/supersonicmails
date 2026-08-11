@@ -65,7 +65,7 @@ export const CASE_STUDIES = [
           blurb: "Want us to install the ROI-First systems in your brand?",
         },
       },
-      { note: "(Limited to 3 brands only before Q4 starts)" },
+      { note: "(Limited to 3 brands only before this quarter ends)" },
     ],
   },
   {
