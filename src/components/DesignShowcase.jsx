@@ -129,7 +129,7 @@ export default function DesignShowcase() {
   const close = useCallback(() => setActive(null), []);
 
   return (
-    <section className="relative w-full overflow-hidden bg-[#06070B] pt-10 pb-12 md:py-28">
+    <section className="relative w-full overflow-hidden bg-[#06070B] pt-6 pb-12 md:pt-14 md:pb-24">
       {/* Ambient radial glow */}
       <div
         className="pointer-events-none absolute left-1/2 top-1/3 h-[560px] w-[900px] -translate-x-1/2 -translate-y-1/2 rounded-full opacity-25 blur-[130px]"

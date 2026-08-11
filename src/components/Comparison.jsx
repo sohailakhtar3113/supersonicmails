@@ -106,7 +106,7 @@ export default function Comparison() {
   };
 
   return (
-    <section className="container-page relative py-16 md:py-24">
+    <section className="container-page relative pt-6 pb-14 md:pt-12 md:pb-20">
       <img
         src={ASSET.headingGlow}
         alt=""

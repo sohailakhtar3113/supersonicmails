@@ -102,7 +102,7 @@ function ReviewFrame({ src, alt, author }) {
 
 export default function TrustReviews() {
   return (
-    <section className="relative w-full overflow-hidden bg-[#06070B] py-20 md:py-28">
+    <section className="relative w-full overflow-hidden bg-[#06070B] pt-4 pb-12 md:pt-10 md:pb-20">
       {/* Ambient radial glow — matches ShortsShowcase */}
       <div
         className="pointer-events-none absolute left-1/2 top-1/3 h-[520px] w-[820px] -translate-x-1/2 -translate-y-1/2 rounded-full opacity-25 blur-[130px]"
@@ -129,7 +129,7 @@ export default function TrustReviews() {
           </p>
 
           {/* Aggregate rating bar — compact */}
-          <div className="mt-6 inline-flex flex-col items-center gap-2.5 rounded-xl border border-white/10 bg-white/[0.03] px-4 py-2.5 backdrop-blur-md sm:flex-row sm:gap-4">
+          {/* <div className="mt-6 inline-flex flex-col items-center gap-2.5 rounded-xl border border-white/10 bg-white/[0.03] px-4 py-2.5 backdrop-blur-md sm:flex-row sm:gap-4">
             <TrustpilotStars size={22} />
             <div className="flex flex-col items-center gap-0.5 sm:items-start">
               <span className="font-display text-[13px] font-semibold text-white">
@@ -141,7 +141,7 @@ export default function TrustReviews() {
                 Based on 35+ verified reviews
               </span>
             </div>
-          </div>
+          </div> */}
 
           {/* Trusted-by avatars — sits between the rating bar and the reviews */}
           <div className="mt-6 flex justify-center">

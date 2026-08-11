@@ -72,26 +72,20 @@ export function Badge({ children, dot = false, className = "" }) {
 }
 
 /**
- * Client brand marks, not faces.
+ * Three client photos, then a counter chip.
  *
- * The stacked-avatar pattern does not require photographs — it reads as "a set
- * of people/companies vouch for this", and swapping headshots for the client's
- * own marks turns decorative portraits into actual evidence. It also sidesteps
- * publishing anyone's likeness.
+ * Each source is a full-frame lifestyle shot, so they are cropped to the
+ * subject and re-encoded to 128px WebP rather than being drawn straight into a
+ * 40px circle — the originals are 878-1206px wide and total ~415KB.
  *
- * Only these three of the thirteen brand logos survive a 38px circle. Nine are
- * wide wordmarks (up to 6.7:1) that reduce to unreadable smears, and Zenpilo is
- * dropped despite fitting because its heart-and-pulse mark is near-identical to
- * Avonwell's — side by side in a stack they look like a duplicate, which reads
- * as a bug rather than a roster.
- *
- * `plain` marks the one logo that ships as its own white disc; the rest are
- * white-on-transparent and need a dark chip behind them.
+ * The third is shot from behind, so it is framed on the head and shoulders;
+ * cropping it like the other two landed on hair and a wristwatch, which reads
+ * as noise at this size instead of as a person.
  */
-const TRUST_MARKS = [
-  { src: "/brands/himalayan-co.png", name: "The Himalayan Co.", plain: true },
-  { src: "/brands/high-rider.png", name: "High Rider" },
-  { src: "/brands/avonwell.png", name: "Avonwell" },
+const TRUST_FACES = [
+  "/assets/avatar-1.webp",
+  "/assets/avatar-2.webp",
+  "/assets/avatar-3.webp",
 ];
 
 function StarRow({ className = "" }) {
@@ -112,46 +106,34 @@ export function TrustRow({ className = "" }) {
   return (
     <div className={`group flex items-center gap-3.5 ${className}`}>
       <div className="flex items-center">
-        {TRUST_MARKS.map((m, i) => (
+        {TRUST_FACES.map((src, i) => (
           <span
-            key={m.src}
-            title={m.name}
+            key={src}
             style={{
               marginLeft: i === 0 ? 0 : "-12px",
-              zIndex: TRUST_MARKS.length - i,
+              zIndex: TRUST_FACES.length - i,
               transitionDelay: `${i * 45}ms`,
             }}
-            className={`relative grid h-10 w-10 shrink-0 place-items-center overflow-hidden rounded-full ring-2 ring-[#00020F] transition-transform duration-300 ease-out group-hover:-translate-y-[3px] ${
-              m.plain
-                ? "bg-white"
-                : "border border-white/[0.14] bg-[linear-gradient(180deg,#18224C,#0A0E22)]"
-            }`}
+            className="relative grid h-10 w-10 shrink-0 place-items-center overflow-hidden rounded-full bg-[#0A0E22] ring-2 ring-[#00020F] transition-transform duration-300 ease-out group-hover:-translate-y-[3px]"
           >
             <img
-              src={m.src}
-              alt={m.name}
+              src={src}
+              alt=""
               loading="lazy"
               draggable={false}
-              // max-* rather than a fixed width: these marks range from 1.0:1
-              // to 1.5:1, so constraining one axis lets the other overflow the
-              // circle and get clipped by overflow-hidden.
-              className={
-                m.plain
-                  ? "h-full w-full object-cover"
-                  : "max-h-[52%] max-w-[62%] object-contain [filter:brightness(0)_invert(1)]"
-              }
+              className="h-full w-full object-cover"
             />
           </span>
         ))}
 
-        {/* Counter chip closes the set, so three marks read as a sample of a
-            roster rather than as the whole client list. */}
-        {/* Sits above the marks, not below: at z-0 the overlap swallowed the
+        {/* Counter chip closes the set, so three photos read as a sample of a
+            roster rather than as the whole client list.
+            Sits above the photos, not below: at z-0 the overlap swallowed the
             "+" and it read as "·42". */}
         <span
           style={{
             marginLeft: "-12px",
-            zIndex: TRUST_MARKS.length + 1,
+            zIndex: TRUST_FACES.length + 1,
             transitionDelay: "135ms",
           }}
           className="relative grid h-10 w-10 shrink-0 place-items-center rounded-full border border-[#3362FF]/35 bg-[#12224F] font-display text-[11.5px] font-semibold text-[#AEC4FF] ring-2 ring-[#00020F] transition-transform duration-300 ease-out group-hover:-translate-y-[3px]"

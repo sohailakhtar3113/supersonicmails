@@ -53,11 +53,6 @@ function CaseCard({ item, index }) {
             }}
           />
 
-          {/* Editorial index */}
-          <span className="pointer-events-none absolute left-4 top-4 rounded-full border border-white/20 bg-black/45 px-2.5 py-1 font-display text-[11px] font-semibold tracking-[0.14em] text-white backdrop-blur-md">
-            {String(index + 1).padStart(2, "0")}
-          </span>
-
           <span className="pointer-events-none absolute bottom-4 right-4 flex translate-y-2 items-center gap-1.5 rounded-full border border-white/15 bg-black/60 px-3 py-1.5 text-[11px] font-medium text-white opacity-0 backdrop-blur-md transition-all duration-[400ms] group-hover:translate-y-0 group-hover:opacity-100">
             Read case study
             <ArrowGlyph className="h-3 w-3" />
@@ -65,6 +60,17 @@ function CaseCard({ item, index }) {
         </div>
 
         <div className="flex flex-1 flex-col p-6 md:p-7">
+          {/* The index used to sit on the artwork, but every one of these
+              screenshots carries its own large headline in that same corner,
+              so the two collided. Moved into the copy block where it has
+              clear space and now reads as an editorial number. */}
+          <span className="mb-3 flex items-center gap-2.5">
+            <span className="font-display text-[12px] font-semibold tracking-[0.16em] text-[#7FA0FF]">
+              {String(index + 1).padStart(2, "0")}
+            </span>
+            <span aria-hidden className="h-px w-6 bg-[#3362FF]/40" />
+          </span>
+
           <h3
             className="text-[19px] uppercase font-semibold  text-white md:text-[21px]"
             style={{ fontFamily: "'Clash Display', Georgia, serif" }}
@@ -87,7 +93,7 @@ function CaseCard({ item, index }) {
 
 export default function CaseStudies() {
   return (
-    <section id="case-studies" className="container-page relative scroll-mt-28 py-16 md:py-24">
+    <section id="case-studies" className="container-page relative scroll-mt-28 pt-6 pb-14 md:pt-12 md:pb-20">
       {/* Ambient glow */}
       <div
         className="pointer-events-none absolute left-1/2 top-12 h-[420px] w-[860px] -translate-x-1/2 rounded-full opacity-[0.22] blur-[130px]"
@@ -96,7 +102,7 @@ export default function CaseStudies() {
         }}
       />
 
-      <Reveal className="relative z-10 mb-12 flex flex-col items-center text-center md:mb-16">
+      <Reveal className="relative z-10 mb-8 flex flex-col items-center -mt-14 text-center md:mb-12">
         <Badge className="mb-6">Case Studies</Badge>
         <h2
           className="text-[22px] font-semibold leading-[1.2] text-white sm:text-[32px] md:text-[46px]"

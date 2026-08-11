@@ -381,7 +381,7 @@ export default function Process() {
               scarce (a 375x667 SE has none to spare). From `sm` up the rail is
               gone and the deck faces the heading directly, so the gap has to
               clear the lift outright. */}
-          <div className="relative z-10 flex h-full flex-col items-center justify-center gap-[clamp(28px,3.6svh,44px)] px-5 pb-[clamp(14px,2svh,32px)] pt-[clamp(88px,11svh,110px)] sm:gap-[clamp(46px,5svh,60px)] md:pt-[clamp(126px,15svh,152px)]">
+          <div className="relative z-10 flex h-full flex-col items-center -mt-26 justify-center gap-[clamp(28px,3.6svh,44px)] px-5 pb-[clamp(14px,2svh,32px)] pt-[clamp(88px,11svh,110px)] sm:gap-[clamp(46px,5svh,60px)] md:pt-[clamp(126px,15svh,152px)]">
             <div className="shrink-0 text-center">
               <Badge dot className="mb-3 !px-3 !py-1 !text-[10.5px] sm:!text-[12.5px] md:mb-5">
                 OUR FRAMEWORK
