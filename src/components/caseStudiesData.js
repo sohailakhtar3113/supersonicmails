@@ -25,6 +25,20 @@ import { BOOKING_URL as CAL } from "./site";
 
 export const CS_DIR = "/casestudies";
 
+/**
+ * The closing ask, shared by every study that uses it rather than pasted into
+ * each one — this copy names a specific number of open slots, so three
+ * hand-copied versions would drift apart the first time that number changes.
+ */
+const AUDIT_CTA = {
+  cta: {
+    label: "Learn More",
+    href: CAL,
+    blurb:
+      "We're taking on 3 more brands before this Quarter, to give them a full deep dive FREE Audit custom to their brand. If you're interested in learning more, tap the learn more button below. We'll see you on the other side.",
+  },
+};
+
 export const CASE_STUDIES = [
   {
     slug: "quotrell-800k-in-162-days",
@@ -78,20 +92,6 @@ export const CASE_STUDIES = [
     metricLabel: "Attributed in 42 days",
     published: true,
     body: [
-      { h2: "Why you should listen to me?" },
-      {
-        profile: {
-          photo: `${CS_DIR}/case2/bio.jpg`,
-          name: "Sameer",
-          text: "Hey, I'm Sameer. My Clients call me Sam haha. I'm the founder and CEO of Bad Retention. We're building Nepal's first premium Retention Marketing agency for 8-9 figure Ecom stores in the beauty, health, supplement and fashion niche. My agency has generated over $800k in attributed email revenue in the past 90 days for our partner brands.",
-          links: [
-            { label: "Instagram", href: "https://www.instagram.com/_sameerakhtar_22/" },
-            { label: "Twitter", href: "https://x.com/EcomSameer" },
-            { label: "LinkedIn", href: "https://www.linkedin.com/in/sameer-akhtar-388259300/" },
-          ],
-        },
-      },
-
       { h2: "Case background" },
       {
         p: "This is a 8 figure brand. They have over 100k email list, they were looking for someone who can get the most out of that list and we eventually met them at the right time.",
@@ -169,6 +169,7 @@ export const CASE_STUDIES = [
         },
       },
       { p: "I love greens, I bet you love it too" },
+      AUDIT_CTA,
     ],
   },
   {
@@ -222,6 +223,7 @@ export const CASE_STUDIES = [
         callout:
           "Welcome email open rates went from 33% to 59% so does the placed order rate even with the graphic emails.",
       },
+      AUDIT_CTA,
     ],
   },
   {
@@ -358,14 +360,7 @@ export const CASE_STUDIES = [
       {
         p: "…then you have the same gap Marroomi had. And the gap is where the money is.",
       },
-      {
-        cta: {
-          label: "Learn More",
-          href: CAL,
-          blurb:
-            "We're taking on 3 more brands before this Quarter, to give them a full deep dive FREE Audit custom to their brand. If you're interested in learning more, tap the learn more button below. We'll see you on the other side.",
-        },
-      },
+      AUDIT_CTA,
     ],
   },
 ];
